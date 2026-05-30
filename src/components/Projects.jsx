@@ -4,6 +4,48 @@ import { FiGithub, FiFolder, FiServer } from 'react-icons/fi'
 
 const projects = [
   {
+    title: 'ShopHub E-Commerce',
+    desc: 'ShopHub E-Commerce is a modern full-stack e-commerce platform with JWT authentication, product catalog, shopping cart, order management, wishlist, search & filtering, admin dashboard, and scalable architecture.',
+    backend: 'Java (JDK 17) & Spring Boot framework with Hibernate JPA ORM, MySQL Relational Database, and Spring Security Session Auth.',
+    tech: ['React', 'Spring Boot', 'MySQL', 'JWT Auth', 'REST APIs'],
+    image: '/shophub.png',
+    date: 'Spring 2026',
+    github: 'https://github.com/VamsiUkkusuri8854/ShopHub-E-Commerce',
+    iconColor: 'text-emerald-500',
+    accentColor: '#10B981',
+    metrics: [
+      { label: 'Uptime', value: '99.9%' },
+      { label: 'Auth', value: 'JWT' },
+      { label: 'Database', value: 'MySQL' }
+    ],
+    features: [
+      'Authentication: Secure JWT-based user and admin authentication.',
+      'Order Management: Full lifecycle shopping cart and order processing.',
+      'Admin Dashboard: Comprehensive product and inventory management.'
+    ]
+  },
+  {
+    title: 'Smart DSA Tracker',
+    desc: 'A full-stack DSA preparation and interview tracking platform built with Spring Boot, MySQL, and React. Features include roadmap tracking, progress analytics, daily streaks, and problem management.',
+    backend: 'Java Spring Boot backend configured with MySQL for scalable relational data storage and JWT authentication.',
+    tech: ['React', 'Spring Boot', 'MySQL', 'Analytics', 'Java'],
+    image: '/dsatracker.png',
+    date: 'Spring 2026',
+    github: 'https://github.com/VamsiUkkusuri8854/Dsa-Tracker',
+    iconColor: 'text-amber-500',
+    accentColor: '#F59E0B',
+    metrics: [
+      { label: 'Analytics', value: 'Real-time' },
+      { label: 'Platform', value: 'Full-Stack' },
+      { label: 'Storage', value: 'Relational' }
+    ],
+    features: [
+      'Progress Analytics: Dynamic insights into coding interview preparation.',
+      'Roadmap Tracking: Structured problem management and daily streaks.',
+      'Performance: Scalable data processing with Spring Boot and MySQL.'
+    ]
+  },
+  {
     title: 'Airline Reservation System',
     desc: 'An enterprise-grade flight scheduling and ticket booking engine. Engineered a highly secure seat allocation algorithm, multi-tenant database partitioning, and secure transaction states.',
     backend: 'Java (JDK 17) & Spring Boot framework with Hibernate JPA ORM, MySQL Relational Database, and Spring Security Session Auth.',
