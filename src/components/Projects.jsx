@@ -242,7 +242,7 @@ export default function Projects({ theme }) {
               <div 
                 key={p.title}
                 data-index={idx}
-                className={`w-[90vw] md:w-[750px] lg:w-[900px] shrink-0 snap-center rounded-2xl overflow-hidden border shadow-2xl transition-all duration-500 flex flex-col md:flex-row relative z-20 ${
+                className={`w-screen h-screen snap-center rounded-2xl overflow-hidden border shadow-2xl transition-all duration-500 flex flex-col md:flex-row relative z-20 ${
                   activeIndex === idx ? 'scale-100 opacity-100' : 'scale-[0.95] opacity-50 hover:opacity-80'
                 } ${
                   theme === 'dark'
@@ -256,7 +256,7 @@ export default function Projects({ theme }) {
                 {/* Left Side: Info & Image */}
                 <div className="w-full md:w-[55%] flex flex-col border-b md:border-b-0 md:border-r border-slate-800/40 relative">
                   {/* Image */}
-                  <div className="h-48 md:h-56 w-full overflow-hidden relative bg-slate-950/20 group">
+                  <div className="h-96 md:h-[500px] w-full overflow-hidden relative bg-slate-950/20 group">
                     <img src={p.image} alt={p.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
                     <span className="absolute top-3 left-3 px-2 py-0.5 rounded bg-slate-950/80 text-[10px] font-mono text-cyan border border-slate-800/80 font-bold uppercase">
                       {p.date}
@@ -264,7 +264,7 @@ export default function Projects({ theme }) {
                   </div>
                   
                   {/* Content */}
-                  <div className="p-6 flex flex-col grow gap-4">
+                  <div className="p-6 flex flex-col grow gap-4 overflow-y-auto" style={{maxHeight: 'calc(100vh - 12rem)'}}>
                     <div>
                       <h3 className={`text-xl md:text-2xl font-bold tracking-tight mb-2 ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>
                         {p.title}
@@ -290,7 +290,7 @@ export default function Projects({ theme }) {
                 {/* Right Side: Engineering Brief */}
                 <div className={`w-full md:w-[45%] p-6 flex flex-col gap-4 justify-between ${
                   theme === 'dark' ? 'bg-slate-950/45' : 'bg-slate-50'
-                }`}>
+                }`} style={{maxHeight: 'calc(100vh - 12rem)', overflowY: 'auto'}}>
                   
                   <div>
                     <div className="flex items-center justify-between border-b border-slate-800/20 pb-3 mb-4">
