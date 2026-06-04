@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { motion } from 'framer-motion'
-import { FiGithub, FiFolder, FiServer } from 'react-icons/fi'
+import { FiGithub, FiServer, FiChevronLeft, FiChevronRight } from 'react-icons/fi'
+
 
 const projects = [
   {
@@ -132,214 +133,259 @@ const projects = [
 ]
 
 export default function Projects({ theme }) {
+  const [activeIndex, setActiveIndex] = useState(0)
+  const scrollRef = useRef(null)
+
+  // Mouse wheel horizontal scrolling
+  useEffect(() => {
+    const el = scrollRef.current
+    if (!el) return
+
+    const onWheel = (e) => {
+      // Prevent default vertical scroll and map to horizontal
+      if (e.deltaY !== 0) {
+        e.preventDefault()
+        el.scrollBy({ left: e.deltaY, behavior: 'auto' })
+      }
+    }
+
+    el.addEventListener('wheel', onWheel, { passive: false })
+    return () => el.removeEventListener('wheel', onWheel)
+  }, [])
+
+  // Update active index based on scroll position using IntersectionObserver
+  useEffect(() => {
+    const el = scrollRef.current
+    if (!el) return
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const index = Number(entry.target.dataset.index)
+            setActiveIndex(index)
+          }
+        })
+      },
+      { root: el, threshold: 0.6 } // 60% of the item must be visible
+    )
+
+    Array.from(el.children).forEach((child) => observer.observe(child))
+
+    return () => observer.disconnect()
+  }, [])
+
+  // Navigation handlers
+  const scrollTo = (index) => {
+    if (scrollRef.current && scrollRef.current.children[index]) {
+      scrollRef.current.children[index].scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'center'
+      })
+    }
+  }
+
+  const scrollNext = () => {
+    if (activeIndex < projects.length - 1) scrollTo(activeIndex + 1)
+  }
+
+  const scrollPrev = () => {
+    if (activeIndex > 0) scrollTo(activeIndex - 1)
+  }
+
   return (
-    <section id="projects" className="py-16 relative overflow-hidden">
+    <section id="projects" className="py-20 relative overflow-hidden">
       {/* Dynamic Cyber Dotted Background */}
       <div className="absolute inset-0 dot-grid-bg opacity-30 pointer-events-none" />
 
-      <div className="grid lg:grid-cols-12 gap-8 items-start relative z-10">
-        {/* Left Side: Rotated Label */}
-        <div className="lg:col-span-1 hidden lg:flex justify-center pt-4">
-          <div className="vertical-label text-sm font-bold text-slate-500 select-none tracking-widest whitespace-nowrap">
+      <div className="max-w-[1400px] mx-auto px-4 relative z-10 flex flex-col items-center">
+        
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center max-w-2xl flex flex-col gap-3 mb-12"
+        >
+          <div className="text-sm font-bold text-slate-500 tracking-widest uppercase">
             SELECTED CREATIONS
           </div>
-        </div>
+          <h2 className="text-3xl md:text-5xl font-extrabold bg-gradient-to-r from-indigo-400 via-blue-500 to-cyan bg-clip-text text-transparent tracking-tight">
+            My Projects
+          </h2>
+          <p className={`text-base md:text-lg leading-relaxed ${theme === 'dark' ? 'text-slate-300' : 'text-slate-600'}`}>
+            A curated showcase of industrial systems, scalable REST backends, and artificial intelligence wrappers.
+          </p>
+        </motion.div>
 
-        {/* Right Side: Staggered Diagonal Timeline */}
-        <div className="lg:col-span-11 flex flex-col gap-12 w-full">
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="max-w-2xl flex flex-col gap-2"
+        {/* Carousel Container */}
+        <div className="relative w-full">
+          {/* Left Arrow */}
+          <button 
+            onClick={scrollPrev}
+            disabled={activeIndex === 0}
+            className={`hidden md:flex absolute left-2 lg:-left-6 top-1/2 -translate-y-1/2 z-30 p-3 rounded-full shadow-xl transition-all ${
+              activeIndex === 0 ? 'opacity-0 pointer-events-none' : 'opacity-100 hover:scale-110'
+            } ${theme === 'dark' ? 'bg-slate-800 text-white hover:bg-slate-700' : 'bg-white text-slate-900 border border-slate-200 hover:bg-slate-50'}`}
           >
-            <h2 className="text-3xl md:text-5xl font-extrabold bg-gradient-to-r from-indigo-400 via-blue-500 to-cyan bg-clip-text text-transparent tracking-tight">
-              My Projects
-            </h2>
-            <p className={`mt-3 text-base md:text-lg leading-relaxed ${
-              theme === 'dark' ? 'text-slate-300' : 'text-slate-600'
-            }`}>
-              A curated timeline of industrial systems, scalable REST backends, and artificial intelligence wrappers.
-            </p>
-          </motion.div>
+            <FiChevronLeft size={24} />
+          </button>
 
-          {/* Timeline Cards Container exactly like Image 5 */}
-          <div className="relative mt-8 flex flex-col gap-12 md:gap-16 w-full max-w-5xl self-center">
-            
-            {/* Staggered Connective dashed path */}
-            <div className="absolute left-4 md:left-1/2 top-4 bottom-4 w-[2px] bg-dashed border-l border-dashed border-violet-500/25 md:-translate-x-1/2 pointer-events-none" />
-
-            {projects.map((p, idx) => {
-              const isEven = idx % 2 === 0;
-              return (
-                <motion.div
-                  key={p.title}
-                  className="flex flex-col md:flex-row w-full items-center justify-between gap-6 md:gap-0 relative"
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-100px' }}
-                  transition={{ duration: 0.6, delay: idx * 0.1 }}
-                >
-                  {/* Staggered Timeline Node Icon */}
-                  <div 
-                    className="absolute left-4 md:left-1/2 top-6 md:top-1/2 md:-translate-y-1/2 w-9 h-9 rounded-full bg-slate-900 border-2 flex items-center justify-center -translate-x-1/2 shadow-lg z-30 transition-all duration-300"
-                    style={{ borderColor: p.accentColor, boxShadow: `0 0 12px ${p.accentColor}33` }}
-                  >
-                    <FiFolder size={14} style={{ color: p.accentColor }} />
+          {/* Scroll Area */}
+          <div 
+            ref={scrollRef}
+            className="flex overflow-x-auto snap-x snap-mandatory gap-6 pb-12 pt-4 px-4 md:px-16 lg:px-12 [&::-webkit-scrollbar]:hidden scroll-smooth"
+            style={{ msOverflowStyle: 'none', scrollbarWidth: 'none' }}
+          >
+            {projects.map((p, idx) => (
+              <div 
+                key={p.title}
+                data-index={idx}
+                className={`w-[90vw] md:w-[750px] lg:w-[900px] shrink-0 snap-center rounded-2xl overflow-hidden border shadow-2xl transition-all duration-500 flex flex-col md:flex-row relative z-20 ${
+                  activeIndex === idx ? 'scale-100 opacity-100' : 'scale-[0.95] opacity-50 hover:opacity-80'
+                } ${
+                  theme === 'dark'
+                    ? 'bg-slate-950/90 border-slate-800/80'
+                    : 'bg-white border-slate-200/80'
+                }`}
+                style={{
+                  ...(activeIndex === idx ? { borderColor: p.accentColor, boxShadow: `0 0 35px ${p.accentColor}25` } : {})
+                }}
+              >
+                {/* Left Side: Info & Image */}
+                <div className="w-full md:w-[55%] flex flex-col border-b md:border-b-0 md:border-r border-slate-800/40 relative">
+                  {/* Image */}
+                  <div className="h-48 md:h-56 w-full overflow-hidden relative bg-slate-950/20 group">
+                    <img src={p.image} alt={p.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
+                    <span className="absolute top-3 left-3 px-2 py-0.5 rounded bg-slate-950/80 text-[10px] font-mono text-cyan border border-slate-800/80 font-bold uppercase">
+                      {p.date}
+                    </span>
                   </div>
-
-                  {/* Staggered Project Card content */}
-                  <div 
-                    className={`w-full md:w-[46%] ml-10 md:ml-0 rounded-2xl overflow-hidden border shadow-2xl transition-all duration-300 ${
-                      isEven ? 'md:order-1' : 'md:order-2'
-                    } ${
-                      theme === 'dark'
-                        ? 'bg-slate-950/70 border-slate-800/80 hover:border-pink-500/40'
-                        : 'bg-white border-slate-200/80 hover:border-violet-400 hover:shadow-violet-100'
-                    }`}
-                    style={{
-                      hover: { borderColor: p.accentColor }
-                    }}
-                  >
-                    {/* Visual Card Image mock */}
-                    <div className="h-48 md:h-52 w-full overflow-hidden relative bg-slate-950/20 border-b border-slate-900/10">
-                      <img 
-                        src={p.image} 
-                        alt={p.title} 
-                        className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" 
-                      />
-                      <span className="absolute top-3 left-3 px-2 py-0.5 rounded bg-slate-950/80 text-[10px] font-mono text-cyan border border-slate-800/80 font-bold uppercase">
-                        {p.date}
-                      </span>
+                  
+                  {/* Content */}
+                  <div className="p-6 flex flex-col grow gap-4">
+                    <div>
+                      <h3 className={`text-xl md:text-2xl font-bold tracking-tight mb-2 ${theme === 'dark' ? 'text-white' : 'text-slate-900'}`}>
+                        {p.title}
+                      </h3>
+                      <p className={`text-sm md:text-base leading-relaxed ${theme === 'dark' ? 'text-slate-350' : 'text-slate-600'}`}>
+                        {p.desc}
+                      </p>
                     </div>
-
-                    {/* Info Card Content */}
-                    <div className="p-6 flex flex-col gap-4">
-                      <div>
-                        <h3 className={`text-xl font-bold tracking-tight mb-2 ${
-                          theme === 'dark' ? 'text-white' : 'text-slate-900'
+                    
+                    {/* Tech Tags */}
+                    <div className="flex flex-wrap gap-2 mt-auto pt-4">
+                      {p.tech.map(t => (
+                        <span key={t} className={`px-2.5 py-1 rounded-md text-[10px] font-mono font-bold uppercase border ${
+                          theme === 'dark' ? 'bg-slate-900/60 border-slate-800 text-cyan' : 'bg-slate-100 border-slate-200 text-violet-600'
                         }`}>
-                          {p.title}
-                        </h3>
-                        <p className={`text-sm leading-relaxed ${
-                          theme === 'dark' ? 'text-slate-350' : 'text-slate-650'
-                        }`}>
-                          {p.desc}
-                        </p>
-                      </div>
-
-                      {/* Architecture Spec Panel */}
-                      <div className={`p-3 rounded-lg border text-xs leading-relaxed ${
-                        theme === 'dark'
-                          ? 'bg-slate-950/60 border-slate-800/70 text-slate-300'
-                          : 'bg-slate-50 border-slate-100 text-slate-600'
-                      }`}>
-                        <div className="flex items-center gap-1 font-bold mb-1.5 font-mono" style={{ color: p.accentColor }}>
-                          <FiServer size={12} /> BACKEND SPECIFICATION
-                        </div>
-                        <p>{p.backend}</p>
-                      </div>
-
-                      {/* Tech Tags and Source Code */}
-                      <div className="flex flex-col gap-4">
-                        <div className="flex flex-wrap gap-1.5">
-                          {p.tech.map(t => (
-                            <span 
-                              key={t}
-                              className={`px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase border ${
-                                theme === 'dark'
-                                  ? 'bg-slate-900/60 border-slate-800 text-cyan'
-                                  : 'bg-slate-100 border-slate-200 text-violet-600'
-                              }`}
-                            >
-                              {t}
-                            </span>
-                          ))}
-                        </div>
-
-                        <a 
-                          href={p.github} 
-                          target="_blank" 
-                          rel="noreferrer"
-                          className={`flex items-center justify-center gap-2 text-xs font-bold py-2.5 rounded-lg border w-full transition-all ${
-                            theme === 'dark'
-                              ? 'bg-slate-900 border-slate-800 text-slate-300 hover:text-white'
-                              : 'bg-slate-950 border-slate-950 text-white hover:bg-slate-800'
-                          }`}
-                          style={{
-                            ':hover': { borderColor: p.accentColor }
-                          }}
-                        >
-                          <FiGithub size={14} /> Github Source Repository ↗
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Staggered Secondary Brief & Performance Metrics Panel in the empty gap (on Desktop) */}
-                  <div 
-                    className={`w-full md:w-[46%] ml-10 md:ml-0 p-6 rounded-2xl border bg-slate-950/45 border-slate-900/60 backdrop-blur-md shadow-xl flex flex-col gap-4 transition-all duration-300 ${
-                      isEven ? 'md:order-2' : 'md:order-1'
-                    } ${
-                      theme === 'dark'
-                        ? 'hover:border-slate-700/80 shadow-slate-950/50'
-                        : 'hover:border-violet-300/80 shadow-slate-200/50'
-                    }`}
-                  >
-                    {/* Header */}
-                    <div className="flex items-center justify-between border-b border-slate-800/40 pb-2.5">
-                      <h4 className="text-xs font-mono font-bold tracking-widest text-slate-400 uppercase">
-                        ⚙️ ENGINEERING BRIEF
-                      </h4>
-                      <span 
-                        className="text-[10px] font-mono font-bold px-2 py-0.5 rounded border bg-slate-900/80"
-                        style={{ color: p.accentColor, borderColor: `${p.accentColor}33` }}
-                      >
-                        METRICS ACTIVE
-                      </span>
-                    </div>
-
-                    {/* Grid of Key Metrics */}
-                    <div className="grid grid-cols-3 gap-2.5 my-1">
-                      {p.metrics.map(m => (
-                        <div key={m.label} className="flex flex-col p-2.5 rounded-lg bg-slate-950/60 border border-slate-900/60 items-center justify-center text-center shadow-inner">
-                          <span className="text-[9px] font-mono font-bold text-slate-500 uppercase tracking-wide">
-                            {m.label}
-                          </span>
-                          <span 
-                            className="text-sm font-extrabold mt-1 tracking-tight text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]"
-                            style={{ color: p.accentColor }}
-                          >
-                            {m.value}
-                          </span>
-                        </div>
+                          {t}
+                        </span>
                       ))}
                     </div>
+                  </div>
+                </div>
 
-                    {/* Features list */}
-                    <div className="flex flex-col gap-2.5 mt-2">
-                      <div className="text-[10px] font-mono font-bold text-slate-500 tracking-wider">
-                        KEY SYSTEMS DEVELOPED:
+                {/* Right Side: Engineering Brief */}
+                <div className={`w-full md:w-[45%] p-6 flex flex-col gap-4 justify-between ${
+                  theme === 'dark' ? 'bg-slate-950/45' : 'bg-slate-50'
+                }`}>
+                  
+                  <div>
+                    <div className="flex items-center justify-between border-b border-slate-800/20 pb-3 mb-4">
+                      <h4 className="text-xs font-mono font-bold tracking-widest text-slate-500 uppercase">
+                        ⚙️ ENGINEERING BRIEF
+                      </h4>
+                    </div>
+                    
+                    {/* Backend Spec */}
+                    <div className={`p-4 rounded-xl border text-xs leading-relaxed mb-5 shadow-sm ${
+                      theme === 'dark' ? 'bg-slate-950/60 border-slate-800/70 text-slate-300' : 'bg-white border-slate-200 text-slate-600'
+                    }`}>
+                      <div className="flex items-center gap-2 font-bold mb-2 font-mono" style={{ color: p.accentColor }}>
+                        <FiServer size={14} /> BACKEND SPECIFICATION
                       </div>
+                      <p className="leading-relaxed">{p.backend}</p>
+                    </div>
+                    
+                    {/* Features */}
+                    <div className="flex flex-col gap-3">
                       {p.features.map((feat, fidx) => (
-                        <div key={fidx} className="flex items-start gap-2 text-xs">
-                          <span 
-                            className="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0" 
-                            style={{ backgroundColor: p.accentColor, boxShadow: `0 0 6px ${p.accentColor}` }} 
-                          />
-                          <p className="text-slate-300 leading-relaxed">
-                            <span className="font-semibold text-white">{feat.split(':')[0]}:</span>
+                        <div key={fidx} className="flex items-start gap-2.5 text-xs">
+                          <span className="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0 shadow-sm" style={{ backgroundColor: p.accentColor, boxShadow: `0 0 8px ${p.accentColor}` }} />
+                          <p className={`leading-relaxed ${theme === 'dark' ? 'text-slate-300' : 'text-slate-600'}`}>
+                            <span className={theme === 'dark' ? 'font-semibold text-white' : 'font-semibold text-slate-900'}>{feat.split(':')[0]}:</span>
                             {feat.split(':')[1]}
                           </p>
                         </div>
                       ))}
                     </div>
                   </div>
-                </motion.div>
-              )
-            })}
+                  
+                  <div className="flex flex-col gap-5 mt-4">
+                    {/* Metrics Grid */}
+                    <div className="grid grid-cols-3 gap-3">
+                      {p.metrics.map(m => (
+                        <div key={m.label} className={`flex flex-col p-2.5 rounded-xl border items-center justify-center text-center shadow-inner ${
+                          theme === 'dark' ? 'bg-slate-950/60 border-slate-900/60' : 'bg-white border-slate-200'
+                        }`}>
+                          <span className="text-[10px] font-mono font-bold text-slate-500 uppercase tracking-wide">{m.label}</span>
+                          <span className="text-base font-extrabold mt-1 tracking-tight drop-shadow-sm" style={{ color: p.accentColor }}>
+                            {m.value}
+                          </span>
+                        </div>
+                      ))}
+                    </div>
+                    
+                    {/* Github Link */}
+                    <a 
+                      href={p.github} target="_blank" rel="noreferrer"
+                      className={`flex items-center justify-center gap-2 text-sm font-bold py-3.5 rounded-xl border w-full transition-all group shadow-sm ${
+                        theme === 'dark'
+                          ? 'bg-slate-900 border-slate-800 text-slate-300 hover:text-white'
+                          : 'bg-slate-900 border-slate-900 text-white hover:bg-slate-800'
+                      }`}
+                      style={{ hover: { borderColor: p.accentColor } }}
+                    >
+                      <FiGithub size={16} className="group-hover:scale-110 transition-transform" /> 
+                      <span className="tracking-wide">Github Source Repository</span> ↗
+                    </a>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
+
+          {/* Right Arrow */}
+          <button 
+            onClick={scrollNext}
+            disabled={activeIndex === projects.length - 1}
+            className={`hidden md:flex absolute right-2 lg:-right-6 top-1/2 -translate-y-1/2 z-30 p-3 rounded-full shadow-xl transition-all ${
+              activeIndex === projects.length - 1 ? 'opacity-0 pointer-events-none' : 'opacity-100 hover:scale-110'
+            } ${theme === 'dark' ? 'bg-slate-800 text-white hover:bg-slate-700' : 'bg-white text-slate-900 border border-slate-200 hover:bg-slate-50'}`}
+          >
+            <FiChevronRight size={24} />
+          </button>
         </div>
+
+        {/* Pagination Dots */}
+        <div className="flex gap-3 mt-4">
+          {projects.map((p, idx) => (
+            <button
+              key={idx}
+              onClick={() => scrollTo(idx)}
+              className={`h-2.5 rounded-full transition-all duration-300 shadow-sm ${
+                activeIndex === idx 
+                  ? 'w-10' 
+                  : `w-2.5 ${theme === 'dark' ? 'bg-slate-700 hover:bg-slate-500' : 'bg-slate-300 hover:bg-slate-400'}`
+              }`}
+              style={activeIndex === idx ? { backgroundColor: p.accentColor } : {}}
+              aria-label={`Go to ${p.title}`}
+            />
+          ))}
+        </div>
+
       </div>
     </section>
   )
