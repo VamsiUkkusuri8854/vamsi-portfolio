@@ -4,6 +4,27 @@ import { FiGithub, FiFolder, FiServer } from 'react-icons/fi'
 
 const projects = [
   {
+    title: 'VamsiFlix Streaming Platform',
+    desc: 'Developed a production-ready Netflix-inspired streaming platform featuring user authentication, movie catalog management, watchlists, watch history, recommendations, admin dashboard, analytics, and MongoDB Atlas integration. Implemented secure JWT-based authentication and deployed using Render and Netlify.',
+    backend: 'Node.js Express backend with MongoDB Atlas NoSQL Database for scalable document storage and secure JWT-based authentication.',
+    tech: ['React', 'Node.js', 'MongoDB', 'JWT Auth', 'Netflix UI'],
+    image: '/vamsiflix.png',
+    date: 'Summer 2026',
+    github: 'https://github.com/VamsiUkkusuri8854/vamsi-flix',
+    iconColor: 'text-red-500',
+    accentColor: '#EF4444',
+    metrics: [
+      { label: 'Uptime', value: '99.9%' },
+      { label: 'Auth', value: 'JWT' },
+      { label: 'Database', value: 'MongoDB' }
+    ],
+    features: [
+      'Authentication: Secure JWT-based user and admin authentication.',
+      'Movie Management: Dynamic catalog, watchlists, and watch history tracking.',
+      'Admin Dashboard: Comprehensive analytics and content management.'
+    ]
+  },
+  {
     title: 'ShopHub E-Commerce',
     desc: 'ShopHub E-Commerce is a modern full-stack e-commerce platform with JWT authentication, product catalog, shopping cart, order management, wishlist, search & filtering, admin dashboard, and scalable architecture.',
     backend: 'Java (JDK 17) & Spring Boot framework with Hibernate JPA ORM, MySQL Relational Database, and Spring Security Session Auth.',
