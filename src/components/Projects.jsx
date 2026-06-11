@@ -190,7 +190,7 @@ export default function Projects({ theme }) {
 
                   {/* Staggered Project Card content */}
                   <div 
-                    className={`w-full md:w-[46%] ml-10 md:ml-0 rounded-2xl overflow-hidden border shadow-2xl transition-all duration-300 ${
+                    className={`w-[calc(100%-2.5rem)] md:w-[46%] ml-10 md:ml-0 rounded-2xl overflow-hidden border shadow-2xl transition-all duration-300 ${
                       isEven ? 'md:order-1' : 'md:order-2'
                     } ${
                       theme === 'dark'
@@ -278,7 +278,7 @@ export default function Projects({ theme }) {
 
                   {/* Staggered Secondary Brief & Performance Metrics Panel in the empty gap (on Desktop) */}
                   <div 
-                    className={`w-full md:w-[46%] ml-10 md:ml-0 p-6 rounded-2xl border bg-slate-950/45 border-slate-900/60 backdrop-blur-md shadow-xl flex flex-col gap-4 transition-all duration-300 ${
+                    className={`w-[calc(100%-2.5rem)] md:w-[46%] ml-10 md:ml-0 p-6 rounded-2xl border bg-slate-950/45 border-slate-900/60 backdrop-blur-md shadow-xl flex flex-col gap-4 transition-all duration-300 ${
                       isEven ? 'md:order-2' : 'md:order-1'
                     } ${
                       theme === 'dark'
