@@ -96,7 +96,7 @@ export default function ResumeWidget({ theme }) {
         </AnimatePresence>
 
         <motion.button
-          onClick={() => setIsModalOpen(true)}
+          onClick={() => setIsOpen(!isOpen)}
           className="px-5 py-3 rounded-full bg-gradient-to-r from-cyan to-violet-600 text-white font-bold shadow-lg flex items-center gap-2 hover:scale-105 transition-transform"
           layout
         >
@@ -113,31 +113,31 @@ export default function ResumeWidget({ theme }) {
       {/* Pristine White Background Resume Template Modal */}
       <AnimatePresence>
         {isModalOpen && (
-          <div className="fixed inset-0 z-[99999] flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm overflow-y-auto print:p-0 print:bg-white print:static">
+          <div className="fixed inset-0 z-[99999] flex sm:items-center justify-center p-0 sm:p-4 bg-slate-950/80 backdrop-blur-sm overflow-y-auto print:p-0 print:bg-white print:static">
             <motion.div 
               initial={{ opacity: 0, scale: 0.95, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="bg-white w-full max-w-4xl rounded-2xl shadow-2xl text-slate-800 overflow-hidden relative flex flex-col my-8 print:my-0 print:shadow-none print:rounded-none"
+              className="bg-white w-full max-w-4xl sm:rounded-2xl shadow-2xl text-slate-800 overflow-hidden relative flex flex-col min-h-screen sm:min-h-0 sm:my-8 print:my-0 print:shadow-none print:rounded-none"
             >
               {/* Modal Top Control Bar */}
-              <div className="bg-slate-50 border-b border-slate-100 px-6 py-4 flex justify-between items-center print:hidden">
+              <div className="sticky top-0 z-50 bg-slate-50/90 backdrop-blur-md border-b border-slate-100 px-4 sm:px-6 py-4 flex justify-between items-center print:hidden shadow-sm">
                 <div className="flex items-center gap-2">
                   <FiFileText className="text-violet-600" size={20} />
-                  <span className="font-semibold text-slate-700 text-sm">Interactive Resume Template</span>
+                  <span className="font-semibold text-slate-700 text-sm">Resume</span>
                 </div>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-2 sm:gap-3">
                   <button 
                     onClick={handlePrint}
                     className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-violet-50 hover:bg-violet-100 text-violet-700 text-xs font-semibold transition-colors"
                   >
-                    <FiPrinter size={14} /> Print / Save PDF
+                    <FiPrinter size={14} /> <span className="hidden sm:inline">Print / Save PDF</span>
                   </button>
                   <button 
                     onClick={() => setIsModalOpen(false)}
-                    className="p-1.5 rounded-lg hover:bg-slate-200 text-slate-400 hover:text-slate-600 transition-colors"
+                    className="p-2 rounded-lg bg-red-50 hover:bg-red-100 text-red-500 transition-colors"
                   >
-                    <FiX size={18} />
+                    <FiX size={20} />
                   </button>
                 </div>
               </div>
