@@ -133,7 +133,7 @@ const projects = [
 
 export default function Projects({ theme }) {
   return (
-    <section id="projects" className="py-16 relative overflow-hidden">
+    <section id="projects" className="py-10 md:py-16 relative overflow-hidden">
       {/* Dynamic Cyber Dotted Background */}
       <div className="absolute inset-0 dot-grid-bg opacity-30 pointer-events-none" />
 

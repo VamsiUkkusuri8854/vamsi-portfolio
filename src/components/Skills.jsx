@@ -31,7 +31,7 @@ export default function Skills({ theme }) {
   return (
     <section
       id="skills"
-      className={`py-12 relative overflow-hidden transition-all duration-150 ${isInside ? 'cursor-none' : ''
+      className={`py-8 md:py-16 relative overflow-hidden transition-all duration-150 ${isInside ? 'cursor-none' : ''
         }`}
       onMouseMove={(e) => setMousePos({ x: e.clientX, y: e.clientY })}
       onMouseEnter={() => setIsInside(true)}

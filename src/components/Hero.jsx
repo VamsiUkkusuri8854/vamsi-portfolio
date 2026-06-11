@@ -15,7 +15,7 @@ export default function Hero({ theme }) {
   }
 
   return (
-    <section id="home" className="min-h-screen flex items-center pt-28 pb-16">
+    <section id="home" className="min-h-[85vh] md:min-h-screen flex items-center pt-20 md:pt-28 pb-10 md:pb-16">
       <div className="grid lg:grid-cols-12 gap-12 items-center w-full">
         {/* Left Content Column */}
         <motion.div

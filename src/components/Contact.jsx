@@ -49,7 +49,7 @@ export default function Contact({ theme }) {
   }
 
   return (
-    <section id="contact" className="py-16 relative">
+    <section id="contact" className="py-10 md:py-16 relative">
       {/* Glow backgrounds */}
       <div className="absolute right-0 top-1/4 w-80 h-80 rounded-full bg-violet-500/5 blur-[100px] pointer-events-none" />
 

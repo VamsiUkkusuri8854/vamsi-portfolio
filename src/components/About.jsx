@@ -25,7 +25,7 @@ export default function About({ theme }) {
   ]
 
   return (
-    <section id="about" className="py-16 relative overflow-hidden scroll-mt-28">
+    <section id="about" className="py-10 md:py-16 relative overflow-hidden scroll-mt-28">
       <div className="grid lg:grid-cols-12 gap-8 items-start">
         {/* Left Side: Rotated Vertical Header */}
         <div className="lg:col-span-1 hidden lg:flex justify-center pt-4">

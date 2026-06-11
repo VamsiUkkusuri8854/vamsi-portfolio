@@ -39,7 +39,7 @@ const certifications = [
 
 export default function Education({ theme }) {
   return (
-    <section id="about-journey" className="py-16 relative">
+    <section id="about-journey" className="py-10 md:py-16 relative">
       <div className="grid lg:grid-cols-12 gap-8 items-start">
         {/* Left Side: Rotated Label */}
         <div className="lg:col-span-1 hidden lg:flex justify-center pt-4">
