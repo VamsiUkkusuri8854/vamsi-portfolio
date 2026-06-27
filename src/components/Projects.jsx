@@ -1,6 +1,6 @@
 import React from 'react'
 import { motion } from 'framer-motion'
-import { FiGithub, FiFolder, FiServer } from 'react-icons/fi'
+import { FiGithub, FiFolder, FiServer, FiExternalLink } from 'react-icons/fi'
 
 const projects = [
   {
@@ -109,24 +109,25 @@ const projects = [
     ]
   },
   {
-    title: 'Research Paper Analyzer',
-    desc: 'An AI-powered document analysis system. Leverages natural language processing (NLP) pipelines to scan academic papers, extract key sentences, summarize documents, and tag research topics.',
-    backend: 'Python, FastAPI high-performance microservices, spaCy NLP pipeline, and scikit-learn machine learning classification models.',
-    tech: ['Python', 'NLP', 'scikit-learn', 'spaCy', 'FastAPI'],
-    image: '/nlp.png',
-    date: 'Autumn 2025',
-    github: 'https://github.com/VamsiUkkusuri8854/Research-Paper-Analyzer',
-    iconColor: 'text-purple-500',
-    accentColor: '#A855F7',
+    title: 'QuickLink URL Shortener',
+    desc: 'A full-stack URL shortening platform featuring custom aliases, QR code generation, expiration management, and real-time link analytics. Fully deployed on cloud infrastructure.',
+    backend: 'Java Spring Boot with Spring Security JWT, and TiDB Cloud / MySQL for high-availability data storage.',
+    tech: ['React', 'Spring Boot', 'TiDB', 'JWT', 'Render'],
+    image: '/url-shortener.png',
+    date: 'Summer 2026',
+    github: 'https://github.com/VamsiUkkusuri8854/url-shortener',
+    live: 'https://url-shortener-live-link.vercel.app',
+    iconColor: 'text-violet-500',
+    accentColor: '#8B5CF6',
     metrics: [
-      { label: 'Parse Time', value: '1.2s' },
-      { label: 'F1-Score', value: '94.5%' },
-      { label: 'Concurrent', value: '500+' }
+      { label: 'Uptime', value: '99.9%' },
+      { label: 'Latency', value: '< 80ms' },
+      { label: 'Storage', value: 'TiDB Cloud' }
     ],
     features: [
-      'Topic Tagging: Automated high-fidelity scikit-learn classifier.',
-      'NLP Summarizer: Dense spaCy context-aware semantic compression.',
-      'FastAPI Microservice: High-concurrency asynchronous pipeline.'
+      'Link Management: Create, manage, and expire shortened URLs with custom aliases.',
+      'Analytics Tracking: Real-time insights on clicks, browsers, and devices.',
+      'Cloud Deployment: Fully deployed on Render (Backend) and Vercel (Frontend).'
     ]
   }
 ]
@@ -257,21 +258,41 @@ export default function Projects({ theme }) {
                           ))}
                         </div>
 
-                        <a 
-                          href={p.github} 
-                          target="_blank" 
-                          rel="noreferrer"
-                          className={`flex items-center justify-center gap-2 text-xs font-bold py-2.5 rounded-lg border w-full transition-all ${
-                            theme === 'dark'
-                              ? 'bg-slate-900 border-slate-800 text-slate-300 hover:text-white'
-                              : 'bg-slate-950 border-slate-950 text-white hover:bg-slate-800'
-                          }`}
-                          style={{
-                            ':hover': { borderColor: p.accentColor }
-                          }}
-                        >
-                          <FiGithub size={14} /> Github Source Repository ↗
-                        </a>
+                        <div className="flex flex-col sm:flex-row gap-2 w-full">
+                          <a 
+                            href={p.github} 
+                            target="_blank" 
+                            rel="noreferrer"
+                            className={`flex items-center justify-center gap-2 text-xs font-bold py-2.5 rounded-lg border flex-1 transition-all ${
+                              theme === 'dark'
+                                ? 'bg-slate-900 border-slate-800 text-slate-300 hover:text-white'
+                                : 'bg-slate-950 border-slate-950 text-white hover:bg-slate-800'
+                            }`}
+                            style={{
+                              ':hover': { borderColor: p.accentColor }
+                            }}
+                          >
+                            <FiGithub size={14} /> Source ↗
+                          </a>
+                          
+                          {p.live && (
+                            <a 
+                              href={p.live} 
+                              target="_blank" 
+                              rel="noreferrer"
+                              className={`flex items-center justify-center gap-2 text-xs font-bold py-2.5 rounded-lg border flex-1 transition-all ${
+                                theme === 'dark'
+                                  ? 'bg-slate-900 border-slate-800 text-slate-300 hover:text-white'
+                                  : 'bg-slate-950 border-slate-950 text-white hover:bg-slate-800'
+                              }`}
+                              style={{
+                                ':hover': { borderColor: p.accentColor }
+                              }}
+                            >
+                              <FiExternalLink size={14} /> Live Demo ↗
+                            </a>
+                          )}
+                        </div>
                       </div>
                     </div>
                   </div>
