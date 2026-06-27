@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import { FiGithub, FiServer, FiExternalLink, FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 
@@ -134,6 +134,54 @@ const projects = [
 
 export default function Projects({ theme }) {
   const scrollRef = useRef(null);
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  const isDown = useRef(false);
+  const startX = useRef(0);
+  const scrollLeftPos = useRef(0);
+
+  const handleScroll = () => {
+    if (scrollRef.current) {
+      const { scrollLeft, scrollWidth, clientWidth } = scrollRef.current;
+      const progress = (scrollWidth - clientWidth) === 0 ? 0 : (scrollLeft / (scrollWidth - clientWidth)) * 100;
+      setScrollProgress(progress);
+    }
+  };
+
+  useEffect(() => {
+    const el = scrollRef.current;
+    if (el) {
+      el.addEventListener('scroll', handleScroll);
+      // Initial check
+      handleScroll();
+      return () => el.removeEventListener('scroll', handleScroll);
+    }
+  }, []);
+
+  const onMouseDown = (e) => {
+    isDown.current = true;
+    scrollRef.current.classList.add('cursor-grabbing');
+    startX.current = e.pageX - scrollRef.current.offsetLeft;
+    scrollLeftPos.current = scrollRef.current.scrollLeft;
+  };
+
+  const onMouseLeave = () => {
+    isDown.current = false;
+    scrollRef.current.classList.remove('cursor-grabbing');
+  };
+
+  const onMouseUp = () => {
+    isDown.current = false;
+    scrollRef.current.classList.remove('cursor-grabbing');
+  };
+
+  const onMouseMove = (e) => {
+    if (!isDown.current) return;
+    e.preventDefault();
+    const x = e.pageX - scrollRef.current.offsetLeft;
+    const walk = (x - startX.current) * 2; 
+    scrollRef.current.scrollLeft = scrollLeftPos.current - walk;
+  };
 
   const scrollLeft = () => {
     if (scrollRef.current) {
@@ -204,7 +252,11 @@ export default function Projects({ theme }) {
         {/* Carousel Container */}
         <div 
           ref={scrollRef}
-          className="flex overflow-x-auto gap-6 pb-8 pt-4 snap-x snap-mandatory scrollbar-hide scroll-smooth"
+          onMouseDown={onMouseDown}
+          onMouseLeave={onMouseLeave}
+          onMouseUp={onMouseUp}
+          onMouseMove={onMouseMove}
+          className="flex overflow-x-auto gap-6 pb-8 pt-4 scrollbar-hide cursor-grab select-none"
           style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
         >
           {projects.map((p, idx) => (
@@ -308,6 +360,14 @@ export default function Projects({ theme }) {
               </div>
             </motion.div>
           ))}
+        </div>
+
+        {/* Scroll Progress Bar */}
+        <div className="w-full max-w-3xl mx-auto h-1.5 bg-slate-800/40 rounded-full overflow-hidden mt-2">
+          <div 
+            className="h-full bg-gradient-to-r from-violet-500 to-cyan rounded-full transition-all duration-150 ease-out"
+            style={{ width: `${scrollProgress}%` }}
+          />
         </div>
       </div>
       
