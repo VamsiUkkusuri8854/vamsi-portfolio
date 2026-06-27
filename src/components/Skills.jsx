@@ -87,7 +87,7 @@ export default function Skills({ theme }) {
               initial={{ opacity: 0, y: 15 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: idx * 0.025 }}
+              transition={{ duration: 0.2, delay: idx * 0.025 }}
             >
               {/* Square rounded card */}
               <motion.div

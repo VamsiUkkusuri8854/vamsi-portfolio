@@ -1,11 +1,33 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import { motion } from 'framer-motion'
-import { FiGithub, FiFolder, FiServer, FiExternalLink } from 'react-icons/fi'
+import { FiGithub, FiServer, FiExternalLink, FiChevronLeft, FiChevronRight } from 'react-icons/fi'
 
 const projects = [
   {
+    title: 'QuickLink URL Shortener',
+    desc: 'A full-stack URL shortening platform featuring custom aliases, QR code generation, expiration management, and real-time link analytics. Fully deployed on cloud infrastructure.',
+    backend: 'Java Spring Boot with Spring Security JWT, and TiDB Cloud / MySQL for high-availability data storage.',
+    tech: ['React', 'Spring Boot', 'TiDB', 'JWT', 'Render'],
+    image: '/url-shortener.png',
+    date: 'Summer 2026',
+    github: 'https://github.com/VamsiUkkusuri8854/url-shortener',
+    live: 'https://quicklinkvamsi.vercel.app',
+    iconColor: 'text-violet-500',
+    accentColor: '#8B5CF6',
+    metrics: [
+      { label: 'Uptime', value: '99.9%' },
+      { label: 'Latency', value: '< 80ms' },
+      { label: 'Storage', value: 'TiDB Cloud' }
+    ],
+    features: [
+      'Link Management: Create, manage, and expire shortened URLs with custom aliases.',
+      'Analytics Tracking: Real-time insights on clicks, browsers, and devices.',
+      'Cloud Deployment: Fully deployed on Render (Backend) and Vercel (Frontend).'
+    ]
+  },
+  {
     title: 'VamsiFlix Streaming Platform',
-    desc: 'Developed a production-ready Netflix-inspired streaming platform featuring user authentication, movie catalog management, watchlists, watch history, recommendations, admin dashboard, analytics, and MongoDB Atlas integration. Implemented secure JWT-based authentication and deployed using Render and Netlify.',
+    desc: 'Developed a production-ready Netflix-inspired streaming platform featuring user authentication, movie catalog management, watchlists, watch history, recommendations, admin dashboard, analytics, and MongoDB Atlas integration.',
     backend: 'Node.js Express backend with MongoDB Atlas NoSQL Database for scalable document storage and secure JWT-based authentication.',
     tech: ['React', 'Node.js', 'MongoDB', 'JWT Auth', 'Netflix UI'],
     image: '/vamsiflix.png',
@@ -107,264 +129,193 @@ const projects = [
       'Live Tabulation: Concurrent real-time dashboard updates.',
       'Session Shields: Strict anti-CSRF token verification.'
     ]
-  },
-  {
-    title: 'QuickLink URL Shortener',
-    desc: 'A full-stack URL shortening platform featuring custom aliases, QR code generation, expiration management, and real-time link analytics. Fully deployed on cloud infrastructure.',
-    backend: 'Java Spring Boot with Spring Security JWT, and TiDB Cloud / MySQL for high-availability data storage.',
-    tech: ['React', 'Spring Boot', 'TiDB', 'JWT', 'Render'],
-    image: '/url-shortener.png',
-    date: 'Summer 2026',
-    github: 'https://github.com/VamsiUkkusuri8854/url-shortener',
-    live: 'https://quicklinkvamsi.vercel.app',
-    iconColor: 'text-violet-500',
-    accentColor: '#8B5CF6',
-    metrics: [
-      { label: 'Uptime', value: '99.9%' },
-      { label: 'Latency', value: '< 80ms' },
-      { label: 'Storage', value: 'TiDB Cloud' }
-    ],
-    features: [
-      'Link Management: Create, manage, and expire shortened URLs with custom aliases.',
-      'Analytics Tracking: Real-time insights on clicks, browsers, and devices.',
-      'Cloud Deployment: Fully deployed on Render (Backend) and Vercel (Frontend).'
-    ]
   }
 ]
 
 export default function Projects({ theme }) {
+  const scrollRef = useRef(null);
+
+  const scrollLeft = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: -400, behavior: 'smooth' });
+    }
+  };
+
+  const scrollRight = () => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollBy({ left: 400, behavior: 'smooth' });
+    }
+  };
+
   return (
     <section id="projects" className="py-10 md:py-16 relative overflow-hidden">
-      {/* Dynamic Cyber Dotted Background */}
       <div className="absolute inset-0 dot-grid-bg opacity-30 pointer-events-none" />
 
-      <div className="grid lg:grid-cols-12 gap-8 items-start relative z-10">
-        {/* Left Side: Rotated Label */}
-        <div className="lg:col-span-1 hidden lg:flex justify-center pt-4">
-          <div className="vertical-label text-sm font-bold text-slate-500 select-none tracking-widest whitespace-nowrap">
-            SELECTED CREATIONS
-          </div>
-        </div>
-
-        {/* Right Side: Staggered Diagonal Timeline */}
-        <div className="lg:col-span-11 flex flex-col gap-12 w-full">
+      <div className="flex flex-col gap-8 relative z-10 w-full max-w-7xl mx-auto px-4 md:px-8">
+        
+        <div className="flex flex-col md:flex-row justify-between items-end gap-4">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="max-w-2xl flex flex-col gap-2"
+            transition={{ duration: 0.2 }}
+            className="flex flex-col gap-2"
           >
             <h2 className="text-3xl md:text-5xl font-extrabold bg-gradient-to-r from-indigo-400 via-blue-500 to-cyan bg-clip-text text-transparent tracking-tight">
               My Projects
             </h2>
-            <p className={`mt-3 text-base md:text-lg leading-relaxed ${
+            <p className={`mt-2 text-base md:text-lg leading-relaxed max-w-2xl ${
               theme === 'dark' ? 'text-slate-300' : 'text-slate-600'
             }`}>
-              A curated timeline of industrial systems, scalable REST backends, and artificial intelligence wrappers.
+              A curated showcase of industrial systems, scalable REST backends, and full-stack applications.
             </p>
           </motion.div>
 
-          {/* Timeline Cards Container exactly like Image 5 */}
-          <div className="relative mt-8 flex flex-col gap-12 md:gap-16 w-full max-w-5xl self-center">
-            
-            {/* Staggered Connective dashed path */}
-            <div className="absolute left-4 md:left-1/2 top-4 bottom-4 w-[2px] bg-dashed border-l border-dashed border-violet-500/25 md:-translate-x-1/2 pointer-events-none" />
+          <motion.div 
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.2, delay: 0.1 }}
+            className="flex gap-2"
+          >
+            <button 
+              onClick={scrollLeft}
+              className={`p-3 rounded-full border transition-all hover:scale-105 active:scale-95 ${
+                theme === 'dark' 
+                  ? 'bg-slate-900 border-slate-700 hover:bg-slate-800 text-white' 
+                  : 'bg-white border-slate-200 hover:bg-slate-50 text-slate-900'
+              }`}
+            >
+              <FiChevronLeft size={24} />
+            </button>
+            <button 
+              onClick={scrollRight}
+              className={`p-3 rounded-full border transition-all hover:scale-105 active:scale-95 ${
+                theme === 'dark' 
+                  ? 'bg-slate-900 border-slate-700 hover:bg-slate-800 text-white' 
+                  : 'bg-white border-slate-200 hover:bg-slate-50 text-slate-900'
+              }`}
+            >
+              <FiChevronRight size={24} />
+            </button>
+          </motion.div>
+        </div>
 
-            {projects.map((p, idx) => {
-              const isEven = idx % 2 === 0;
-              return (
-                <motion.div
-                  key={p.title}
-                  className="flex flex-col md:flex-row w-full items-center justify-between gap-6 md:gap-0 relative"
-                  initial={{ opacity: 0, y: 40 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-100px' }}
-                  transition={{ duration: 0.6, delay: idx * 0.1 }}
-                >
-                  {/* Staggered Timeline Node Icon */}
-                  <div 
-                    className="absolute left-4 md:left-1/2 top-6 md:top-1/2 md:-translate-y-1/2 w-9 h-9 rounded-full bg-slate-900 border-2 flex items-center justify-center -translate-x-1/2 shadow-lg z-30 transition-all duration-300"
-                    style={{ borderColor: p.accentColor, boxShadow: `0 0 12px ${p.accentColor}33` }}
-                  >
-                    <FiFolder size={14} style={{ color: p.accentColor }} />
+        {/* Carousel Container */}
+        <div 
+          ref={scrollRef}
+          className="flex overflow-x-auto gap-6 pb-8 pt-4 snap-x snap-mandatory scrollbar-hide scroll-smooth"
+          style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+        >
+          {projects.map((p, idx) => (
+            <motion.div
+              key={p.title}
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.25, delay: idx * 0.05 }}
+              className={`min-w-[85vw] md:min-w-[400px] max-w-[450px] snap-center shrink-0 flex flex-col rounded-2xl overflow-hidden border shadow-xl transition-all duration-300 ${
+                theme === 'dark'
+                  ? 'bg-slate-950/70 border-slate-800/80 hover:border-slate-600/80'
+                  : 'bg-white border-slate-200/80 hover:border-violet-300 hover:shadow-violet-100'
+              }`}
+            >
+              {/* Card Image */}
+              <div className="h-48 w-full overflow-hidden relative bg-slate-950/20 border-b border-slate-900/10 shrink-0">
+                <img 
+                  src={p.image} 
+                  alt={p.title} 
+                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" 
+                />
+                <span className="absolute top-3 left-3 px-2 py-0.5 rounded bg-slate-950/80 text-[10px] font-mono text-cyan border border-slate-800/80 font-bold uppercase backdrop-blur-md">
+                  {p.date}
+                </span>
+              </div>
+
+              {/* Card Content Wrapper to ensure equal height behavior */}
+              <div className="p-6 flex flex-col gap-4 flex-1">
+                <div>
+                  <h3 className={`text-xl font-bold tracking-tight mb-2 ${
+                    theme === 'dark' ? 'text-white' : 'text-slate-900'
+                  }`}>
+                    {p.title}
+                  </h3>
+                  <p className={`text-sm leading-relaxed line-clamp-3 ${
+                    theme === 'dark' ? 'text-slate-350' : 'text-slate-650'
+                  }`}>
+                    {p.desc}
+                  </p>
+                </div>
+
+                {/* Architecture Spec Panel */}
+                <div className={`p-3 rounded-lg border text-xs leading-relaxed mt-auto ${
+                  theme === 'dark'
+                    ? 'bg-slate-950/60 border-slate-800/70 text-slate-300'
+                    : 'bg-slate-50 border-slate-100 text-slate-600'
+                }`}>
+                  <div className="flex items-center gap-1 font-bold mb-1.5 font-mono" style={{ color: p.accentColor }}>
+                    <FiServer size={12} /> BACKEND SPECIFICATION
                   </div>
+                  <p className="line-clamp-2">{p.backend}</p>
+                </div>
 
-                  {/* Staggered Project Card content */}
-                  <div 
-                    className={`w-[calc(100%-2.5rem)] md:w-[46%] ml-10 md:ml-0 rounded-2xl overflow-hidden border shadow-2xl transition-all duration-300 ${
-                      isEven ? 'md:order-1' : 'md:order-2'
-                    } ${
-                      theme === 'dark'
-                        ? 'bg-slate-950/70 border-slate-800/80 hover:border-pink-500/40'
-                        : 'bg-white border-slate-200/80 hover:border-violet-400 hover:shadow-violet-100'
-                    }`}
-                    style={{
-                      hover: { borderColor: p.accentColor }
-                    }}
-                  >
-                    {/* Visual Card Image mock */}
-                    <div className="h-48 md:h-52 w-full overflow-hidden relative bg-slate-950/20 border-b border-slate-900/10">
-                      <img 
-                        src={p.image} 
-                        alt={p.title} 
-                        className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" 
-                      />
-                      <span className="absolute top-3 left-3 px-2 py-0.5 rounded bg-slate-950/80 text-[10px] font-mono text-cyan border border-slate-800/80 font-bold uppercase">
-                        {p.date}
-                      </span>
-                    </div>
-
-                    {/* Info Card Content */}
-                    <div className="p-6 flex flex-col gap-4">
-                      <div>
-                        <h3 className={`text-xl font-bold tracking-tight mb-2 ${
-                          theme === 'dark' ? 'text-white' : 'text-slate-900'
-                        }`}>
-                          {p.title}
-                        </h3>
-                        <p className={`text-sm leading-relaxed ${
-                          theme === 'dark' ? 'text-slate-350' : 'text-slate-650'
-                        }`}>
-                          {p.desc}
-                        </p>
-                      </div>
-
-                      {/* Architecture Spec Panel */}
-                      <div className={`p-3 rounded-lg border text-xs leading-relaxed ${
+                {/* Tech Tags */}
+                <div className="flex flex-wrap gap-1.5">
+                  {p.tech.map(t => (
+                    <span 
+                      key={t}
+                      className={`px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase border ${
                         theme === 'dark'
-                          ? 'bg-slate-950/60 border-slate-800/70 text-slate-300'
-                          : 'bg-slate-50 border-slate-100 text-slate-600'
-                      }`}>
-                        <div className="flex items-center gap-1 font-bold mb-1.5 font-mono" style={{ color: p.accentColor }}>
-                          <FiServer size={12} /> BACKEND SPECIFICATION
-                        </div>
-                        <p>{p.backend}</p>
-                      </div>
+                          ? 'bg-slate-900/60 border-slate-800 text-cyan'
+                          : 'bg-slate-100 border-slate-200 text-violet-600'
+                      }`}
+                    >
+                      {t}
+                    </span>
+                  ))}
+                </div>
 
-                      {/* Tech Tags and Source Code */}
-                      <div className="flex flex-col gap-4">
-                        <div className="flex flex-wrap gap-1.5">
-                          {p.tech.map(t => (
-                            <span 
-                              key={t}
-                              className={`px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase border ${
-                                theme === 'dark'
-                                  ? 'bg-slate-900/60 border-slate-800 text-cyan'
-                                  : 'bg-slate-100 border-slate-200 text-violet-600'
-                              }`}
-                            >
-                              {t}
-                            </span>
-                          ))}
-                        </div>
-
-                        <div className="flex flex-col sm:flex-row gap-2 w-full">
-                          <a 
-                            href={p.github} 
-                            target="_blank" 
-                            rel="noreferrer"
-                            className={`flex items-center justify-center gap-2 text-xs font-bold py-2.5 rounded-lg border flex-1 transition-all ${
-                              theme === 'dark'
-                                ? 'bg-slate-900 border-slate-800 text-slate-300 hover:text-white'
-                                : 'bg-slate-950 border-slate-950 text-white hover:bg-slate-800'
-                            }`}
-                            style={{
-                              ':hover': { borderColor: p.accentColor }
-                            }}
-                          >
-                            <FiGithub size={14} /> Source ↗
-                          </a>
-                          
-                          {p.live && (
-                            <a 
-                              href={p.live} 
-                              target="_blank" 
-                              rel="noreferrer"
-                              className={`flex items-center justify-center gap-2 text-xs font-bold py-2.5 rounded-lg border flex-1 transition-all ${
-                                theme === 'dark'
-                                  ? 'bg-slate-900 border-slate-800 text-slate-300 hover:text-white'
-                                  : 'bg-slate-950 border-slate-950 text-white hover:bg-slate-800'
-                              }`}
-                              style={{
-                                ':hover': { borderColor: p.accentColor }
-                              }}
-                            >
-                              <FiExternalLink size={14} /> Live Demo ↗
-                            </a>
-                          )}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Staggered Secondary Brief & Performance Metrics Panel in the empty gap (on Desktop) */}
-                  <div 
-                    className={`w-[calc(100%-2.5rem)] md:w-[46%] ml-10 md:ml-0 p-6 rounded-2xl border bg-slate-950/45 border-slate-900/60 backdrop-blur-md shadow-xl flex flex-col gap-4 transition-all duration-300 ${
-                      isEven ? 'md:order-2' : 'md:order-1'
-                    } ${
+                {/* Buttons */}
+                <div className="flex flex-col sm:flex-row gap-2 w-full mt-2">
+                  <a 
+                    href={p.github} 
+                    target="_blank" 
+                    rel="noreferrer"
+                    className={`flex items-center justify-center gap-2 text-xs font-bold py-2.5 rounded-lg border flex-1 transition-all ${
                       theme === 'dark'
-                        ? 'hover:border-slate-700/80 shadow-slate-950/50'
-                        : 'hover:border-violet-300/80 shadow-slate-200/50'
+                        ? 'bg-slate-900 border-slate-800 text-slate-300 hover:text-white'
+                        : 'bg-slate-950 border-slate-950 text-white hover:bg-slate-800'
                     }`}
                   >
-                    {/* Header */}
-                    <div className="flex items-center justify-between border-b border-slate-800/40 pb-2.5">
-                      <h4 className="text-xs font-mono font-bold tracking-widest text-slate-400 uppercase">
-                        ⚙️ ENGINEERING BRIEF
-                      </h4>
-                      <span 
-                        className="text-[10px] font-mono font-bold px-2 py-0.5 rounded border bg-slate-900/80"
-                        style={{ color: p.accentColor, borderColor: `${p.accentColor}33` }}
-                      >
-                        METRICS ACTIVE
-                      </span>
-                    </div>
-
-                    {/* Grid of Key Metrics */}
-                    <div className="grid grid-cols-3 gap-2.5 my-1">
-                      {p.metrics.map(m => (
-                        <div key={m.label} className="flex flex-col p-2.5 rounded-lg bg-slate-950/60 border border-slate-900/60 items-center justify-center text-center shadow-inner">
-                          <span className="text-[9px] font-mono font-bold text-slate-500 uppercase tracking-wide">
-                            {m.label}
-                          </span>
-                          <span 
-                            className="text-sm font-extrabold mt-1 tracking-tight text-white drop-shadow-[0_0_8px_rgba(255,255,255,0.2)]"
-                            style={{ color: p.accentColor }}
-                          >
-                            {m.value}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-
-                    {/* Features list */}
-                    <div className="flex flex-col gap-2.5 mt-2">
-                      <div className="text-[10px] font-mono font-bold text-slate-500 tracking-wider">
-                        KEY SYSTEMS DEVELOPED:
-                      </div>
-                      {p.features.map((feat, fidx) => (
-                        <div key={fidx} className="flex items-start gap-2 text-xs">
-                          <span 
-                            className="w-1.5 h-1.5 rounded-full mt-1.5 shrink-0" 
-                            style={{ backgroundColor: p.accentColor, boxShadow: `0 0 6px ${p.accentColor}` }} 
-                          />
-                          <p className="text-slate-300 leading-relaxed">
-                            <span className="font-semibold text-white">{feat.split(':')[0]}:</span>
-                            {feat.split(':')[1]}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-                </motion.div>
-              )
-            })}
-          </div>
+                    <FiGithub size={14} /> Source ↗
+                  </a>
+                  
+                  {p.live && (
+                    <a 
+                      href={p.live} 
+                      target="_blank" 
+                      rel="noreferrer"
+                      className={`flex items-center justify-center gap-2 text-xs font-bold py-2.5 rounded-lg border flex-1 transition-all ${
+                        theme === 'dark'
+                          ? 'bg-slate-900 border-slate-800 text-slate-300 hover:text-white'
+                          : 'bg-slate-950 border-slate-950 text-white hover:bg-slate-800'
+                      }`}
+                    >
+                      <FiExternalLink size={14} /> Live Demo ↗
+                    </a>
+                  )}
+                </div>
+              </div>
+            </motion.div>
+          ))}
         </div>
       </div>
+      
+      <style jsx global>{`
+        .scrollbar-hide::-webkit-scrollbar {
+            display: none;
+        }
+      `}</style>
     </section>
   )
 }
-
-
-

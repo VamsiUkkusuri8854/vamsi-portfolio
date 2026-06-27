@@ -74,7 +74,7 @@ export default function Preloader({ onComplete }) {
       className="fixed inset-0 z-50 bg-[#070b13] flex flex-col items-center justify-center font-mono overflow-hidden select-none"
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.6, ease: "easeInOut" }}
+      transition={{ duration: 0.2, ease: "easeInOut" }}
     >
       {/* 3D Cyber Background Grid Layout */}
       <div className="absolute inset-0 opacity-10 pointer-events-none">
@@ -87,7 +87,7 @@ export default function Preloader({ onComplete }) {
         className="relative z-10 px-8 py-10 md:px-12 md:py-14 rounded-2xl border border-slate-800/80 bg-slate-950/40 backdrop-blur-md max-w-xl w-[90%] text-center flex flex-col items-center gap-6 shadow-[0_0_50px_rgba(0,240,255,0.03)]"
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5, ease: 'easeOut' }}
+        transition={{ duration: 0.2, ease: 'easeOut' }}
       >
         {/* Animated Cyber Ring Border */}
         <div className="absolute -inset-[1px] rounded-2xl border border-cyan/30 pointer-events-none animate-pulse" />

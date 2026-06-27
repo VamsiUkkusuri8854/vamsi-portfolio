@@ -22,7 +22,7 @@ export default function Hero({ theme }) {
           className="lg:col-span-7 flex flex-col justify-center"
           initial={{ x: -40, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
+          transition={{ duration: 0.2, ease: 'easeOut' }}
         >
           <div className={`inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono mb-6 w-fit border ${
             theme === 'dark'
@@ -88,7 +88,7 @@ export default function Hero({ theme }) {
           className="lg:col-span-5 flex justify-center items-center relative"
           initial={{ scale: 0.95, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.2, delay: 0.2 }}
         >
           {/* Main Container */}
           <div className="relative w-80 h-80 md:w-[400px] md:h-[400px] flex items-center justify-center">

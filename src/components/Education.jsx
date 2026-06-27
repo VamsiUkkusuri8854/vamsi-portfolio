@@ -79,7 +79,7 @@ export default function Education({ theme }) {
                   initial={{ opacity: 0, x: -20 }}
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: idx * 0.1 }}
+                  transition={{ delay: idx * 0.05 }}
                 >
                   {/* Timeline bullet dot */}
                   <span className={`absolute -left-[6px] top-1.5 w-3 h-3 rounded-full border-2 transition-all duration-300 ${

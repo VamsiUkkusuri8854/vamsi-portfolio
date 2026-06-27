@@ -77,7 +77,7 @@ export default function About({ theme }) {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
+                transition={{ delay: idx * 0.05 }}
                 whileHover={{ y: -6 }}
               >
                 <div>
