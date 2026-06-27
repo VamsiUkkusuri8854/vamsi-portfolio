@@ -116,7 +116,7 @@ const projects = [
     image: '/url-shortener.png',
     date: 'Summer 2026',
     github: 'https://github.com/VamsiUkkusuri8854/url-shortener',
-    live: 'https://url-shortener-live-link.vercel.app',
+    live: 'https://quicklinkvamsi.vercel.app',
     iconColor: 'text-violet-500',
     accentColor: '#8B5CF6',
     metrics: [
