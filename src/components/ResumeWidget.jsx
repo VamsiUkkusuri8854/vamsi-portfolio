@@ -129,15 +129,15 @@ export default function ResumeWidget({ theme }) {
                 <div className="flex items-center gap-2 sm:gap-3">
                   <button 
                     onClick={handlePrint}
-                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-violet-50 hover:bg-violet-100 text-violet-700 text-xs font-semibold transition-colors"
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-violet-50 hover:bg-violet-100 text-violet-700 text-xs font-semibold transition-colors border border-violet-200"
                   >
-                    <FiPrinter size={14} /> <span className="hidden sm:inline">Print / Save PDF</span>
+                    <FiPrinter size={14} /> <span>Download PDF</span>
                   </button>
                   <button 
                     onClick={() => setIsModalOpen(false)}
-                    className="p-2 rounded-lg bg-red-50 hover:bg-red-100 text-red-500 transition-colors"
+                    className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-50 hover:bg-red-100 text-red-600 text-xs font-semibold transition-colors border border-red-200"
                   >
-                    <FiX size={20} />
+                    <FiX size={16} /> <span>Close</span>
                   </button>
                 </div>
               </div>
