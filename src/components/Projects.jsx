@@ -127,7 +127,70 @@ const projects = [
     features: [
       'MFA Tokenized: Multi-factor validation protocols per voter.',
       'Live Tabulation: Concurrent real-time dashboard updates.',
-      'Session Shields: Strict anti-CSRF token verification.'
+    ]
+  },
+  {
+    title: 'Dayflow HRMS',
+    desc: 'A modern, responsive Human Resource Management System (HRMS) built with Next.js 14, Tailwind CSS, and Prisma. Features include role-based access, attendance tracking, and payroll management.',
+    backend: 'Next.js Server Actions with Prisma ORM and relational database storage.',
+    tech: ['Next.js', 'Tailwind', 'Prisma', 'TypeScript'],
+    image: '/hrms.png',
+    date: 'Summer 2026',
+    github: 'https://github.com/VamsiUkkusuri8854/Human-Resource-Managment-System',
+    iconColor: 'text-indigo-500',
+    accentColor: '#6366F1',
+    metrics: [
+      { label: 'Role-Based', value: 'Access' },
+      { label: 'Platform', value: 'Next.js' },
+      { label: 'Database', value: 'Prisma' }
+    ],
+    features: [
+      'Authentication: Secure role-based access for Admin and Employee.',
+      'Attendance: Real-time tracking and dashboard insights.',
+      'Payroll Management: Seamless processing and salary tracking.'
+    ]
+  },
+  {
+    title: 'Employee Layoff Prediction',
+    desc: 'Machine learning application designed to predict employee layoffs using predictive analytics and trained on historical HR data. Deployed interactively via Streamlit.',
+    backend: 'Python with Scikit-learn for ML pipeline and Streamlit for web serving.',
+    tech: ['Python', 'Machine Learning', 'Streamlit', 'Scikit-learn'],
+    image: '/layoff.png',
+    date: 'Summer 2026',
+    github: 'https://github.com/VamsiUkkusuri8854/employee-layoff-prediction',
+    live: 'https://employee-layoff-prediction.streamlit.app/',
+    iconColor: 'text-rose-500',
+    accentColor: '#F43F5E',
+    metrics: [
+      { label: 'ML', value: 'Predictive' },
+      { label: 'Framework', value: 'Streamlit' },
+      { label: 'Language', value: 'Python' }
+    ],
+    features: [
+      'Analytics: Data-driven insights into employee retention.',
+      'Interactive UI: Real-time prediction dashboard using Streamlit.',
+      'Model: Trained on robust historical HR datasets.'
+    ]
+  },
+  {
+    title: 'Student Management System',
+    desc: 'A full-stack web application enabling users to securely log in and manage students, courses, attendance, and reports through a responsive dashboard.',
+    backend: 'Java Spring Boot backend configured with MySQL for scalable relational data storage.',
+    tech: ['Java', 'Spring Boot', 'MySQL', 'Bootstrap', 'JavaScript'],
+    image: '/student.png',
+    date: 'Summer 2026',
+    github: 'https://github.com/VamsiUkkusuri8854/Student--Management-System',
+    iconColor: 'text-fuchsia-500',
+    accentColor: '#D946EF',
+    metrics: [
+      { label: 'CRUD', value: 'Complete' },
+      { label: 'Platform', value: 'Full-Stack' },
+      { label: 'Storage', value: 'MySQL' }
+    ],
+    features: [
+      'Management: Comprehensive CRUD operations for student records.',
+      'Secure Access: Role-based data access and dashboard views.',
+      'Reporting: Attendance tracking and marks evaluation.'
     ]
   }
 ]
@@ -179,7 +242,7 @@ export default function Projects({ theme }) {
     if (!isDown.current) return;
     e.preventDefault();
     const x = e.pageX - scrollRef.current.offsetLeft;
-    const walk = (x - startX.current) * 2; 
+    const walk = (x - startX.current) * 2;
     scrollRef.current.scrollLeft = scrollLeftPos.current - walk;
   };
 
@@ -200,7 +263,7 @@ export default function Projects({ theme }) {
       <div className="absolute inset-0 dot-grid-bg opacity-30 pointer-events-none" />
 
       <div className="flex flex-col gap-8 relative z-10 w-full max-w-7xl mx-auto px-4 md:px-8">
-        
+
         <div className="flex flex-col md:flex-row justify-between items-end gap-4">
           <motion.div
             initial={{ opacity: 0, y: 15 }}
@@ -212,37 +275,34 @@ export default function Projects({ theme }) {
             <h2 className="text-3xl md:text-5xl font-extrabold bg-gradient-to-r from-indigo-400 via-blue-500 to-cyan bg-clip-text text-transparent tracking-tight">
               My Projects
             </h2>
-            <p className={`mt-2 text-base md:text-lg leading-relaxed max-w-2xl ${
-              theme === 'dark' ? 'text-slate-300' : 'text-slate-600'
-            }`}>
+            <p className={`mt-2 text-base md:text-lg leading-relaxed max-w-2xl ${theme === 'dark' ? 'text-slate-300' : 'text-slate-600'
+              }`}>
               A curated showcase of industrial systems, scalable REST backends, and full-stack applications.
             </p>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.2, delay: 0.1 }}
             className="flex gap-2"
           >
-            <button 
+            <button
               onClick={scrollLeft}
-              className={`p-3 rounded-full border transition-all hover:scale-105 active:scale-95 ${
-                theme === 'dark' 
-                  ? 'bg-slate-900 border-slate-700 hover:bg-slate-800 text-white' 
+              className={`p-3 rounded-full border transition-all hover:scale-105 active:scale-95 ${theme === 'dark'
+                  ? 'bg-slate-900 border-slate-700 hover:bg-slate-800 text-white'
                   : 'bg-white border-slate-200 hover:bg-slate-50 text-slate-900'
-              }`}
+                }`}
             >
               <FiChevronLeft size={24} />
             </button>
-            <button 
+            <button
               onClick={scrollRight}
-              className={`p-3 rounded-full border transition-all hover:scale-105 active:scale-95 ${
-                theme === 'dark' 
-                  ? 'bg-slate-900 border-slate-700 hover:bg-slate-800 text-white' 
+              className={`p-3 rounded-full border transition-all hover:scale-105 active:scale-95 ${theme === 'dark'
+                  ? 'bg-slate-900 border-slate-700 hover:bg-slate-800 text-white'
                   : 'bg-white border-slate-200 hover:bg-slate-50 text-slate-900'
-              }`}
+                }`}
             >
               <FiChevronRight size={24} />
             </button>
@@ -250,7 +310,7 @@ export default function Projects({ theme }) {
         </div>
 
         {/* Carousel Container */}
-        <div 
+        <div
           ref={scrollRef}
           onMouseDown={onMouseDown}
           onMouseLeave={onMouseLeave}
@@ -266,18 +326,17 @@ export default function Projects({ theme }) {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.25, delay: idx * 0.05 }}
-              className={`min-w-[85vw] md:min-w-[400px] max-w-[450px] snap-center shrink-0 flex flex-col rounded-2xl overflow-hidden border shadow-xl transition-all duration-300 ${
-                theme === 'dark'
+              className={`min-w-[85vw] md:min-w-[400px] max-w-[450px] snap-center shrink-0 flex flex-col rounded-2xl overflow-hidden border shadow-xl transition-all duration-300 ${theme === 'dark'
                   ? 'bg-slate-950/70 border-slate-800/80 hover:border-slate-600/80'
                   : 'bg-white border-slate-200/80 hover:border-violet-300 hover:shadow-violet-100'
-              }`}
+                }`}
             >
               {/* Card Image */}
               <div className="h-48 w-full overflow-hidden relative bg-slate-950/20 border-b border-slate-900/10 shrink-0">
-                <img 
-                  src={p.image} 
-                  alt={p.title} 
-                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105" 
+                <img
+                  src={p.image}
+                  alt={p.title}
+                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
                 />
                 <span className="absolute top-3 left-3 px-2 py-0.5 rounded bg-slate-950/80 text-[10px] font-mono text-cyan border border-slate-800/80 font-bold uppercase backdrop-blur-md">
                   {p.date}
@@ -287,24 +346,21 @@ export default function Projects({ theme }) {
               {/* Card Content Wrapper to ensure equal height behavior */}
               <div className="p-6 flex flex-col gap-4 flex-1">
                 <div>
-                  <h3 className={`text-xl font-bold tracking-tight mb-2 ${
-                    theme === 'dark' ? 'text-white' : 'text-slate-900'
-                  }`}>
+                  <h3 className={`text-xl font-bold tracking-tight mb-2 ${theme === 'dark' ? 'text-white' : 'text-slate-900'
+                    }`}>
                     {p.title}
                   </h3>
-                  <p className={`text-sm leading-relaxed line-clamp-3 ${
-                    theme === 'dark' ? 'text-slate-350' : 'text-slate-650'
-                  }`}>
+                  <p className={`text-sm leading-relaxed line-clamp-3 ${theme === 'dark' ? 'text-slate-350' : 'text-slate-650'
+                    }`}>
                     {p.desc}
                   </p>
                 </div>
 
                 {/* Architecture Spec Panel */}
-                <div className={`p-3 rounded-lg border text-xs leading-relaxed mt-auto ${
-                  theme === 'dark'
+                <div className={`p-3 rounded-lg border text-xs leading-relaxed mt-auto ${theme === 'dark'
                     ? 'bg-slate-950/60 border-slate-800/70 text-slate-300'
                     : 'bg-slate-50 border-slate-100 text-slate-600'
-                }`}>
+                  }`}>
                   <div className="flex items-center gap-1 font-bold mb-1.5 font-mono" style={{ color: p.accentColor }}>
                     <FiServer size={12} /> BACKEND SPECIFICATION
                   </div>
@@ -314,13 +370,12 @@ export default function Projects({ theme }) {
                 {/* Tech Tags */}
                 <div className="flex flex-wrap gap-1.5">
                   {p.tech.map(t => (
-                    <span 
+                    <span
                       key={t}
-                      className={`px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase border ${
-                        theme === 'dark'
+                      className={`px-2 py-0.5 rounded text-[10px] font-mono font-bold uppercase border ${theme === 'dark'
                           ? 'bg-slate-900/60 border-slate-800 text-cyan'
                           : 'bg-slate-100 border-slate-200 text-violet-600'
-                      }`}
+                        }`}
                     >
                       {t}
                     </span>
@@ -329,29 +384,27 @@ export default function Projects({ theme }) {
 
                 {/* Buttons */}
                 <div className="flex flex-col sm:flex-row gap-2 w-full mt-2">
-                  <a 
-                    href={p.github} 
-                    target="_blank" 
+                  <a
+                    href={p.github}
+                    target="_blank"
                     rel="noreferrer"
-                    className={`flex items-center justify-center gap-2 text-xs font-bold py-2.5 rounded-lg border flex-1 transition-all ${
-                      theme === 'dark'
+                    className={`flex items-center justify-center gap-2 text-xs font-bold py-2.5 rounded-lg border flex-1 transition-all ${theme === 'dark'
                         ? 'bg-slate-900 border-slate-800 text-slate-300 hover:text-white'
                         : 'bg-slate-950 border-slate-950 text-white hover:bg-slate-800'
-                    }`}
+                      }`}
                   >
                     <FiGithub size={14} /> Source ↗
                   </a>
-                  
+
                   {p.live && (
-                    <a 
-                      href={p.live} 
-                      target="_blank" 
+                    <a
+                      href={p.live}
+                      target="_blank"
                       rel="noreferrer"
-                      className={`flex items-center justify-center gap-2 text-xs font-bold py-2.5 rounded-lg border flex-1 transition-all ${
-                        theme === 'dark'
+                      className={`flex items-center justify-center gap-2 text-xs font-bold py-2.5 rounded-lg border flex-1 transition-all ${theme === 'dark'
                           ? 'bg-slate-900 border-slate-800 text-slate-300 hover:text-white'
                           : 'bg-slate-950 border-slate-950 text-white hover:bg-slate-800'
-                      }`}
+                        }`}
                     >
                       <FiExternalLink size={14} /> Live Demo ↗
                     </a>
@@ -364,13 +417,13 @@ export default function Projects({ theme }) {
 
         {/* Scroll Progress Bar */}
         <div className="w-full max-w-3xl mx-auto h-1.5 bg-slate-800/40 rounded-full overflow-hidden mt-2">
-          <div 
+          <div
             className="h-full bg-gradient-to-r from-violet-500 to-cyan rounded-full transition-all duration-150 ease-out"
             style={{ width: `${scrollProgress}%` }}
           />
         </div>
       </div>
-      
+
       <style jsx global>{`
         .scrollbar-hide::-webkit-scrollbar {
             display: none;
