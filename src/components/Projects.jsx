@@ -214,10 +214,22 @@ export default function Projects({ theme }) {
   useEffect(() => {
     const el = scrollRef.current;
     if (el) {
+      const handleWheel = (e) => {
+        if (e.deltaY !== 0 && Math.abs(e.deltaX) === 0) {
+          e.preventDefault();
+          el.scrollBy({ left: e.deltaY > 0 ? 150 : -150, behavior: 'smooth' });
+        }
+      };
+
+      el.addEventListener('wheel', handleWheel, { passive: false });
       el.addEventListener('scroll', handleScroll);
       // Initial check
       handleScroll();
-      return () => el.removeEventListener('scroll', handleScroll);
+      
+      return () => {
+        el.removeEventListener('wheel', handleWheel);
+        el.removeEventListener('scroll', handleScroll);
+      };
     }
   }, []);
 
