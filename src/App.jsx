@@ -14,7 +14,7 @@ import Preloader from './components/Preloader'
 import { AnimatePresence } from 'framer-motion'
 
 export default function App() {
-  const theme = 'dark'
+  const theme = 'light'
   const [loading, setLoading] = useState(true)
   const [activeSection, setActiveSection] = useState('home')
 
@@ -48,7 +48,7 @@ export default function App() {
       {/* Core Pages Container */}
       <main className="relative z-10 flex flex-col flex-grow min-h-screen pt-24">
         {activeSection === 'home' && (
-          <div className="w-full flex-grow transition-colors duration-500 bg-gradient-to-b from-[#0b1120] via-[#09183d] to-[#0b1120]">
+          <div className={`w-full flex-grow transition-colors duration-500 ${theme === 'dark' ? 'bg-gradient-to-b from-[#0b1120] via-[#09183d] to-[#0b1120]' : 'bg-slate-50'}`}>
             <div className="container mx-auto px-6 md:px-12 lg:px-24 xl:px-32 max-w-7xl">
               <Hero theme={theme} setActiveSection={setActiveSection} />
             </div>
@@ -56,7 +56,7 @@ export default function App() {
         )}
 
         {activeSection === 'about' && (
-          <div className="w-full flex-grow transition-colors duration-500 bg-gradient-to-b from-[#0b1120] via-[#1e1548] to-[#0b1120]">
+          <div className={`w-full flex-grow transition-colors duration-500 ${theme === 'dark' ? 'bg-gradient-to-b from-[#0b1120] via-[#1e1548] to-[#0b1120]' : 'bg-slate-50'}`}>
             <div className="container mx-auto px-6 md:px-12 lg:px-24 xl:px-32 max-w-7xl">
               <About theme={theme} />
             </div>
@@ -64,7 +64,7 @@ export default function App() {
         )}
 
         {activeSection === 'skills' && (
-          <div className="w-full flex-grow transition-colors duration-500 bg-gradient-to-b from-[#0b1120] via-[#092d24] to-[#0b1120]">
+          <div className={`w-full flex-grow transition-colors duration-500 ${theme === 'dark' ? 'bg-gradient-to-b from-[#0b1120] via-[#092d24] to-[#0b1120]' : 'bg-slate-50'}`}>
             <div className="container mx-auto px-6 md:px-12 lg:px-24 xl:px-32 max-w-7xl">
               <Skills theme={theme} />
             </div>
@@ -72,7 +72,7 @@ export default function App() {
         )}
 
         {activeSection === 'projects' && (
-          <div className="w-full flex-grow transition-colors duration-500 bg-gradient-to-b from-[#0b1120] via-[#0e2158] to-[#0b1120]">
+          <div className={`w-full flex-grow transition-colors duration-500 ${theme === 'dark' ? 'bg-gradient-to-b from-[#0b1120] via-[#0e2158] to-[#0b1120]' : 'bg-slate-50'}`}>
             <div className="container mx-auto px-6 md:px-12 lg:px-24 xl:px-32 max-w-7xl">
               <Projects theme={theme} />
             </div>
@@ -80,7 +80,7 @@ export default function App() {
         )}
 
         {activeSection === 'education' && (
-          <div className="w-full flex-grow transition-colors duration-500 bg-gradient-to-b from-[#0b1120] via-[#240e3c] to-[#0b1120]">
+          <div className={`w-full flex-grow transition-colors duration-500 ${theme === 'dark' ? 'bg-gradient-to-b from-[#0b1120] via-[#240e3c] to-[#0b1120]' : 'bg-slate-50'}`}>
             <div className="container mx-auto px-6 md:px-12 lg:px-24 xl:px-32 max-w-7xl">
               <Education theme={theme} />
             </div>
@@ -88,7 +88,7 @@ export default function App() {
         )}
 
         {activeSection === 'contact' && (
-          <div className="w-full flex-grow transition-colors duration-500 bg-gradient-to-b from-[#0b1120] via-[#092545] to-[#0b1120]">
+          <div className={`w-full flex-grow transition-colors duration-500 ${theme === 'dark' ? 'bg-gradient-to-b from-[#0b1120] via-[#092545] to-[#0b1120]' : 'bg-slate-50'}`}>
             <div className="container mx-auto px-6 md:px-12 lg:px-24 xl:px-32 max-w-7xl">
               <Contact theme={theme} />
             </div>
