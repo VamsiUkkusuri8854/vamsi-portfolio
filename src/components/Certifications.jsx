@@ -20,6 +20,15 @@ const certs = [
     iconColor: 'text-[#F80000]',
     bgColor: 'bg-[#F80000]/10',
     borderColor: 'border-[#F80000]'
+  },
+  {
+    title: 'SAP Certified Professional',
+    issuer: 'SAP',
+    date: 'Recent',
+    url: 'https://www.linkedin.com/in/vamsi-ukkusuri-9ab0aa280/',
+    iconColor: 'text-[#008FD3]',
+    bgColor: 'bg-[#008FD3]/10',
+    borderColor: 'border-[#008FD3]'
   }
 ]
 
