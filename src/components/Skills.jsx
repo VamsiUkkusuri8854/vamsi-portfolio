@@ -98,11 +98,11 @@ export default function Skills({ theme }) {
                   boxShadow: `0 15px 30px -5px ${skill.color}66, 0 10px 15px -6px ${skill.color}66`
                 }}
                 whileTap={{ scale: 0.95 }}
-                className="w-20 h-20 md:w-24 md:h-24 rounded-2xl flex items-center justify-center p-3 border transition-all duration-300 bg-slate-950 cursor-pointer border-slate-800/80 shadow-[0_4px_20px_rgba(0,0,0,0.5)]"
+                className="w-20 h-20 md:w-24 md:h-24 rounded-2xl flex items-center justify-center p-3 border transition-all duration-300 bg-white cursor-pointer border-slate-200 shadow-sm"
               >
                 <motion.div
                   className="flex items-center justify-center transition-transform duration-300 group-hover:scale-130"
-                  style={{ 
+                  style={{
                     color: skill.color,
                     filter: `drop-shadow(0 0 10px ${skill.color}cc)`
                   }}
