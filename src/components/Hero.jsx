@@ -94,54 +94,9 @@ export default function Hero({ theme, setActiveSection }) {
             <div className="absolute w-64 h-64 rounded-full bg-violet-600/10 blur-3xl" />
 
             {/* Profile Image Container */}
-            <div className="w-64 h-64 md:w-[300px] md:h-[300px] rounded-full relative p-1.5 bg-gradient-to-tr from-cyan via-violet-500 to-pink-500 shadow-2xl z-10 hover:scale-105 transition-transform duration-500">
+            <div className="w-72 h-72 md:w-[360px] md:h-[360px] rounded-full relative p-1.5 bg-gradient-to-tr from-cyan via-violet-500 to-pink-500 shadow-2xl z-10 hover:scale-105 transition-transform duration-500">
               <img src="/profile.png" alt="Vamsi Ukkusuri" className="w-full h-full object-cover rounded-full border-4 border-white shadow-inner bg-white" />
             </div>
-
-            {/* Floating Social Icons around the image */}
-            <motion.a
-              href="https://github.com/VamsiUkkusuri8854"
-              target="_blank"
-              rel="noreferrer"
-              whileHover={{ scale: 1.15, zIndex: 30 }}
-              whileTap={{ scale: 0.95 }}
-              className="absolute top-[10%] left-[5%] md:top-[12%] md:left-[8%] w-12 h-12 md:w-14 md:h-14 rounded-full border border-slate-300 bg-white text-[#24292e] flex items-center justify-center shadow-lg cursor-pointer transition-transform z-20"
-            >
-              <FaGithub size={22} />
-            </motion.a>
-
-            <motion.a
-              href="https://www.geeksforgeeks.org/profile/vamsiuk1oml?tab=activity"
-              target="_blank"
-              rel="noreferrer"
-              whileHover={{ scale: 1.15, zIndex: 30 }}
-              whileTap={{ scale: 0.95 }}
-              className="absolute top-[10%] right-[5%] md:top-[12%] md:right-[8%] w-12 h-12 md:w-14 md:h-14 rounded-full border border-slate-300 bg-white text-[#2F8D46] flex items-center justify-center shadow-lg cursor-pointer transition-transform z-20"
-            >
-              <SiGeeksforgeeks size={22} />
-            </motion.a>
-
-            <motion.a
-              href="https://www.linkedin.com/in/vamsi-ukkusuri-9ab0aa280"
-              target="_blank"
-              rel="noreferrer"
-              whileHover={{ scale: 1.15, zIndex: 30 }}
-              whileTap={{ scale: 0.95 }}
-              className="absolute bottom-[10%] left-[5%] md:bottom-[12%] md:left-[8%] w-12 h-12 md:w-14 md:h-14 rounded-full border border-slate-300 bg-white text-[#0A66C2] flex items-center justify-center shadow-lg cursor-pointer transition-transform z-20"
-            >
-              <FaLinkedin size={22} />
-            </motion.a>
-
-            <motion.a
-              href="https://leetcode.com/u/oNPlQuPkmI/"
-              target="_blank"
-              rel="noreferrer"
-              whileHover={{ scale: 1.15, zIndex: 30 }}
-              whileTap={{ scale: 0.95 }}
-              className="absolute bottom-[10%] right-[5%] md:bottom-[12%] md:right-[8%] w-12 h-12 md:w-14 md:h-14 rounded-full border border-slate-300 bg-white text-[#F89F1B] flex items-center justify-center shadow-lg cursor-pointer transition-transform z-20"
-            >
-              <SiLeetcode size={22} />
-            </motion.a>
 
 
 
