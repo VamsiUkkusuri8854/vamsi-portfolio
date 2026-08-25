@@ -29,6 +29,15 @@ const certs = [
     iconColor: 'text-[#008FD3]',
     bgColor: 'bg-[#008FD3]/10',
     borderColor: 'border-[#008FD3]'
+  },
+  {
+    title: 'Quantum Fundamentals Program',
+    issuer: 'WISER & Qubitech',
+    date: '04-02-2026',
+    url: 'https://www.linkedin.com/in/vamsi-ukkusuri-9ab0aa280/',
+    iconColor: 'text-[#00B4D8]',
+    bgColor: 'bg-[#00B4D8]/10',
+    borderColor: 'border-[#00B4D8]'
   }
 ]
 
