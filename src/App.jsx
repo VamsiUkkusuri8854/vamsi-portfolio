@@ -5,6 +5,7 @@ import About from './components/About'
 import Skills from './components/Skills'
 import Projects from './components/Projects'
 import Education from './components/Education'
+import Certifications from './components/Certifications'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import SocialBar from './components/SocialBar'
@@ -83,6 +84,14 @@ export default function App() {
           <div className={`w-full flex-grow transition-colors duration-500 ${theme === 'dark' ? 'bg-gradient-to-b from-[#0b1120] via-[#240e3c] to-[#0b1120]' : 'bg-white'}`}>
             <div className="container mx-auto px-6 md:px-12 lg:px-24 xl:px-32 max-w-7xl">
               <Education theme={theme} />
+            </div>
+          </div>
+        )}
+
+        {activeSection === 'certifications' && (
+          <div className={`w-full flex-grow transition-colors duration-500 ${theme === 'dark' ? 'bg-gradient-to-b from-[#0b1120] via-[#1a0e3c] to-[#0b1120]' : 'bg-white'}`}>
+            <div className="container mx-auto px-6 md:px-12 lg:px-24 xl:px-32 max-w-7xl">
+              <Certifications theme={theme} />
             </div>
           </div>
         )}
