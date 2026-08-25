@@ -93,65 +93,55 @@ export default function Hero({ theme, setActiveSection }) {
             {/* Glowing Backdrop */}
             <div className="absolute w-64 h-64 rounded-full bg-violet-600/10 blur-3xl" />
 
-            {/* Huge 3D Sphere */}
-            <div className="glossy-orb-large w-64 h-64 md:w-80 md:h-80 rounded-full flex items-center justify-center relative">
-
-              {/* Internal Sphere Highlights */}
-              <div className="absolute top-[10%] left-[10%] w-[30%] h-[30%] bg-white/20 rounded-full blur-[2px] pointer-events-none" />
-              <div className="absolute bottom-[8%] right-[8%] w-[25%] h-[25%] bg-black/45 rounded-full blur-[5px] pointer-events-none" />
-
-              {/* Centered 2x2 Grid of Social Icons inside the Sphere */}
-              <div className="grid grid-cols-2 gap-7 md:gap-9 z-20 relative">
-                {/* GitHub Widget */}
-                <motion.a
-                  href="https://github.com/VamsiUkkusuri8854"
-                  target="_blank"
-                  rel="noreferrer"
-                  whileHover={{ scale: 1.25, boxShadow: '0 0 20px rgba(255,255,255,0.7)', zIndex: 30 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="w-11 h-11 md:w-12 md:h-12 rounded-full border border-slate-300 bg-white text-[#24292e] flex items-center justify-center shadow-sm cursor-pointer transition-transform"
-                >
-                  <FaGithub size={18} />
-                </motion.a>
-
-                {/* GeeksforGeeks Widget */}
-                <motion.a
-                  href="https://www.geeksforgeeks.org/profile/vamsiuk1oml?tab=activity"
-                  target="_blank"
-                  rel="noreferrer"
-                  whileHover={{ scale: 1.25, boxShadow: '0 0 20px rgba(47,141,70,0.7)', zIndex: 30 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="w-11 h-11 md:w-12 md:h-12 rounded-full border border-slate-300 bg-white text-[#2F8D46] flex items-center justify-center shadow-sm cursor-pointer transition-transform"
-                >
-                  <SiGeeksforgeeks size={18} />
-                </motion.a>
-
-                {/* LinkedIn Widget */}
-                <motion.a
-                  href="https://www.linkedin.com/in/vamsi-ukkusuri-9ab0aa280"
-                  target="_blank"
-                  rel="noreferrer"
-                  whileHover={{ scale: 1.25, boxShadow: '0 0 20px rgba(10,102,194,0.7)', zIndex: 30 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="w-11 h-11 md:w-12 md:h-12 rounded-full border border-slate-300 bg-white text-[#0A66C2] flex items-center justify-center shadow-sm cursor-pointer transition-transform"
-                >
-                  <FaLinkedin size={18} />
-                </motion.a>
-
-                {/* LeetCode Widget */}
-                <motion.a
-                  href="https://leetcode.com/u/oNPlQuPkmI/"
-                  target="_blank"
-                  rel="noreferrer"
-                  whileHover={{ scale: 1.25, boxShadow: '0 0 20px rgba(248,159,27,0.7)', zIndex: 30 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="w-11 h-11 md:w-12 md:h-12 rounded-full border border-slate-300 bg-white text-[#F89F1B] flex items-center justify-center shadow-sm cursor-pointer transition-transform"
-                >
-                  <SiLeetcode size={18} />
-                </motion.a>
-              </div>
-
+            {/* Profile Image Container */}
+            <div className="w-64 h-64 md:w-[300px] md:h-[300px] rounded-full relative p-1.5 bg-gradient-to-tr from-cyan via-violet-500 to-pink-500 shadow-2xl z-10 hover:scale-105 transition-transform duration-500">
+              <img src="/profile.png" alt="Vamsi Ukkusuri" className="w-full h-full object-cover rounded-full border-4 border-white shadow-inner bg-white" />
             </div>
+
+            {/* Floating Social Icons around the image */}
+            <motion.a
+              href="https://github.com/VamsiUkkusuri8854"
+              target="_blank"
+              rel="noreferrer"
+              whileHover={{ scale: 1.15, zIndex: 30 }}
+              whileTap={{ scale: 0.95 }}
+              className="absolute top-[10%] left-[5%] md:top-[12%] md:left-[8%] w-12 h-12 md:w-14 md:h-14 rounded-full border border-slate-300 bg-white text-[#24292e] flex items-center justify-center shadow-lg cursor-pointer transition-transform z-20"
+            >
+              <FaGithub size={22} />
+            </motion.a>
+
+            <motion.a
+              href="https://www.geeksforgeeks.org/profile/vamsiuk1oml?tab=activity"
+              target="_blank"
+              rel="noreferrer"
+              whileHover={{ scale: 1.15, zIndex: 30 }}
+              whileTap={{ scale: 0.95 }}
+              className="absolute top-[10%] right-[5%] md:top-[12%] md:right-[8%] w-12 h-12 md:w-14 md:h-14 rounded-full border border-slate-300 bg-white text-[#2F8D46] flex items-center justify-center shadow-lg cursor-pointer transition-transform z-20"
+            >
+              <SiGeeksforgeeks size={22} />
+            </motion.a>
+
+            <motion.a
+              href="https://www.linkedin.com/in/vamsi-ukkusuri-9ab0aa280"
+              target="_blank"
+              rel="noreferrer"
+              whileHover={{ scale: 1.15, zIndex: 30 }}
+              whileTap={{ scale: 0.95 }}
+              className="absolute bottom-[10%] left-[5%] md:bottom-[12%] md:left-[8%] w-12 h-12 md:w-14 md:h-14 rounded-full border border-slate-300 bg-white text-[#0A66C2] flex items-center justify-center shadow-lg cursor-pointer transition-transform z-20"
+            >
+              <FaLinkedin size={22} />
+            </motion.a>
+
+            <motion.a
+              href="https://leetcode.com/u/oNPlQuPkmI/"
+              target="_blank"
+              rel="noreferrer"
+              whileHover={{ scale: 1.15, zIndex: 30 }}
+              whileTap={{ scale: 0.95 }}
+              className="absolute bottom-[10%] right-[5%] md:bottom-[12%] md:right-[8%] w-12 h-12 md:w-14 md:h-14 rounded-full border border-slate-300 bg-white text-[#F89F1B] flex items-center justify-center shadow-lg cursor-pointer transition-transform z-20"
+            >
+              <SiLeetcode size={22} />
+            </motion.a>
 
 
 
