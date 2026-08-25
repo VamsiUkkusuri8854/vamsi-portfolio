@@ -95,7 +95,7 @@ export default function Hero({ theme, setActiveSection }) {
 
             {/* Profile Image Container */}
             <div className="w-64 h-64 md:w-[300px] md:h-[300px] rounded-full relative p-1.5 bg-gradient-to-tr from-cyan via-violet-500 to-pink-500 shadow-2xl z-10 hover:scale-105 transition-transform duration-500">
-              <img src="/my image .png" alt="Vamsi Ukkusuri" className="w-full h-full object-cover rounded-full border-4 border-white shadow-inner bg-white" />
+              <img src="/profile.png" alt="Vamsi Ukkusuri" className="w-full h-full object-cover rounded-full border-4 border-white shadow-inner bg-white" />
             </div>
 
             {/* Floating Social Icons around the image */}
