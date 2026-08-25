@@ -24,7 +24,7 @@ export default function App() {
   }, [])
 
   return (
-    <div className={`min-h-screen relative transition-colors duration-500 overflow-x-hidden ${theme === 'dark' ? 'bg-[#0b1120] text-slate-100' : 'bg-[#ffffff] text-slate-800'
+    <div className={`min-h-screen relative transition-colors duration-500 overflow-x-hidden ${theme === 'dark' ? 'bg-[#0b1120] text-slate-100' : 'bg-[#ffffff] text-slate-900 font-medium'
       }`}>
       {/* Dynamic Greetings Preloader Screen */}
       <AnimatePresence mode="wait">
