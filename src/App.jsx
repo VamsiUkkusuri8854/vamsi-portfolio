@@ -16,13 +16,11 @@ import { AnimatePresence } from 'framer-motion'
 export default function App() {
   const theme = 'dark'
   const [loading, setLoading] = useState(true)
+  const [activeSection, setActiveSection] = useState('home')
 
-  // Force scroll to top and direct to home on mount (refresh)
+  // Force scroll to top on mount
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
-    if (window.location.hash !== '' && window.location.hash !== '#home') {
-      window.location.hash = '#home'
-    }
   }, [])
 
   return (
@@ -45,51 +43,57 @@ export default function App() {
       <ResumeWidget theme={theme} />
 
       {/* Primary Navigation Header */}
-      <Navbar theme={theme} />
+      <Navbar theme={theme} activeSection={activeSection} setActiveSection={setActiveSection} />
 
       {/* Core Pages Container */}
-      <main className="relative z-10 flex flex-col">
-        {/* Hero Section Background: Cyber Blue Grid Track */}
-        <div className="w-full border-b transition-colors duration-500 bg-gradient-to-b from-[#0b1120] via-[#09183d] to-[#0b1120] border-cyan/20">
-          <div className="container mx-auto px-6 md:px-12 lg:px-24 xl:px-32 max-w-7xl">
-            <Hero theme={theme} />
+      <main className="relative z-10 flex flex-col flex-grow min-h-screen pt-24">
+        {activeSection === 'home' && (
+          <div className="w-full flex-grow transition-colors duration-500 bg-gradient-to-b from-[#0b1120] via-[#09183d] to-[#0b1120]">
+            <div className="container mx-auto px-6 md:px-12 lg:px-24 xl:px-32 max-w-7xl">
+              <Hero theme={theme} setActiveSection={setActiveSection} />
+            </div>
           </div>
-        </div>
+        )}
 
-        {/* About Section Background: Deep Royal Purple Grid Track */}
-        <div className="w-full border-b transition-colors duration-500 bg-gradient-to-b from-[#0b1120] via-[#1e1548] to-[#0b1120] border-purple-500/20">
-          <div className="container mx-auto px-6 md:px-12 lg:px-24 xl:px-32 max-w-7xl">
-            <About theme={theme} />
+        {activeSection === 'about' && (
+          <div className="w-full flex-grow transition-colors duration-500 bg-gradient-to-b from-[#0b1120] via-[#1e1548] to-[#0b1120]">
+            <div className="container mx-auto px-6 md:px-12 lg:px-24 xl:px-32 max-w-7xl">
+              <About theme={theme} />
+            </div>
           </div>
-        </div>
+        )}
 
-        {/* Skills Section Background: Forest Emerald Green Grid Track */}
-        <div className="w-full border-b transition-colors duration-500 bg-gradient-to-b from-[#0b1120] via-[#092d24] to-[#0b1120] border-emerald-500/20">
-          <div className="container mx-auto px-6 md:px-12 lg:px-24 xl:px-32 max-w-7xl">
-            <Skills theme={theme} />
+        {activeSection === 'skills' && (
+          <div className="w-full flex-grow transition-colors duration-500 bg-gradient-to-b from-[#0b1120] via-[#092d24] to-[#0b1120]">
+            <div className="container mx-auto px-6 md:px-12 lg:px-24 xl:px-32 max-w-7xl">
+              <Skills theme={theme} />
+            </div>
           </div>
-        </div>
+        )}
 
-        {/* Projects Section Background: Electric Indigo/Blue Grid Track */}
-        <div className="w-full border-b transition-colors duration-500 bg-gradient-to-b from-[#0b1120] via-[#0e2158] to-[#0b1120] border-indigo-500/20">
-          <div className="container mx-auto px-6 md:px-12 lg:px-24 xl:px-32 max-w-7xl">
-            <Projects theme={theme} />
+        {activeSection === 'projects' && (
+          <div className="w-full flex-grow transition-colors duration-500 bg-gradient-to-b from-[#0b1120] via-[#0e2158] to-[#0b1120]">
+            <div className="container mx-auto px-6 md:px-12 lg:px-24 xl:px-32 max-w-7xl">
+              <Projects theme={theme} />
+            </div>
           </div>
-        </div>
+        )}
 
-        {/* Education Section Background: Cyber Hot Pink/Violet Grid Track */}
-        <div className="w-full border-b transition-colors duration-500 bg-gradient-to-b from-[#0b1120] via-[#240e3c] to-[#0b1120] border-pink-500/20">
-          <div className="container mx-auto px-6 md:px-12 lg:px-24 xl:px-32 max-w-7xl">
-            <Education theme={theme} />
+        {activeSection === 'education' && (
+          <div className="w-full flex-grow transition-colors duration-500 bg-gradient-to-b from-[#0b1120] via-[#240e3c] to-[#0b1120]">
+            <div className="container mx-auto px-6 md:px-12 lg:px-24 xl:px-32 max-w-7xl">
+              <Education theme={theme} />
+            </div>
           </div>
-        </div>
+        )}
 
-        {/* Contact Section Background: Deep Cyber Cyan/Teal Grid Track */}
-        <div className="w-full border-b transition-colors duration-500 bg-gradient-to-b from-[#0b1120] via-[#092545] to-[#0b1120] border-teal-500/20">
-          <div className="container mx-auto px-6 md:px-12 lg:px-24 xl:px-32 max-w-7xl">
-            <Contact theme={theme} />
+        {activeSection === 'contact' && (
+          <div className="w-full flex-grow transition-colors duration-500 bg-gradient-to-b from-[#0b1120] via-[#092545] to-[#0b1120]">
+            <div className="container mx-auto px-6 md:px-12 lg:px-24 xl:px-32 max-w-7xl">
+              <Contact theme={theme} />
+            </div>
           </div>
-        </div>
+        )}
       </main>
 
       {/* Grid Footer details */}
