@@ -34,12 +34,12 @@ export default function Navbar({ theme, activeSection, setActiveSection }) {
             <button
               key={l.name}
               onClick={() => { setActiveSection(l.id); window.scrollTo(0,0); }}
-              className={`px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs font-bold transition-all hover:scale-105 ${
+              className={`px-4 py-2 md:px-6 md:py-2.5 rounded-full text-sm md:text-base font-bold transition-all hover:scale-105 border ${
                   activeSection === l.id 
-                    ? 'bg-violet-600 text-white shadow-lg'
+                    ? 'bg-white border-violet-600 text-violet-700 shadow-md ring-1 ring-violet-600'
                     : (theme === 'dark'
-                      ? 'bg-slate-900/60 border border-slate-800/80 text-slate-200 hover:border-cyan hover:text-cyan hover:shadow-[0_0_12px_rgba(0,240,255,0.25)]'
-                      : 'bg-slate-950 text-white hover:bg-slate-800 shadow-lg')
+                      ? 'bg-slate-900/60 border-slate-800/80 text-slate-200 hover:border-cyan hover:text-cyan'
+                      : 'bg-white border-slate-300 text-slate-600 hover:border-violet-400 hover:text-violet-600 shadow-sm hover:shadow-md')
                 }`}
             >
               {l.name}
