@@ -59,9 +59,7 @@ export default function ResumeWidget({ theme }) {
                     whileHover={{ x: -6 }}
                   >
                     <span className={theme === 'dark' ? 'text-slate-300' : 'text-slate-800 font-semibold'}>{item.label}</span>
-                    <span className={`p-1 rounded text-pink-500 ${
-                      theme === 'dark' ? 'bg-slate-900/60' : 'bg-slate-50'
-                    }`}>
+                    <span className="p-1 rounded text-violet-600 bg-white">
                       {item.icon}
                     </span>
                   </motion.button>
@@ -83,9 +81,7 @@ export default function ResumeWidget({ theme }) {
                     whileHover={{ x: -6 }}
                   >
                     <span className={theme === 'dark' ? 'text-slate-300' : 'text-slate-800 font-semibold'}>{item.label}</span>
-                    <span className={`p-1 rounded text-pink-500 ${
-                      theme === 'dark' ? 'bg-slate-900/60' : 'bg-slate-50'
-                    }`}>
+                    <span className="p-1 rounded text-violet-600 bg-white">
                       {item.icon}
                     </span>
                   </motion.a>
@@ -97,7 +93,7 @@ export default function ResumeWidget({ theme }) {
 
         <motion.button
           onClick={() => setIsOpen(!isOpen)}
-          className="px-5 py-3 rounded-full bg-gradient-to-r from-cyan to-violet-600 text-white font-bold shadow-lg flex items-center gap-2 hover:scale-105 transition-transform"
+          className="px-5 py-3 rounded-full bg-white text-violet-700 border-2 border-violet-600 font-bold shadow-lg flex items-center gap-2 hover:scale-105 hover:bg-violet-50 transition-transform"
           layout
         >
           <span className="tracking-wide text-sm font-bold uppercase">RESUME</span>

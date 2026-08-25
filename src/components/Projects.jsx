@@ -400,10 +400,7 @@ export default function Projects({ theme }) {
                     href={p.github}
                     target="_blank"
                     rel="noreferrer"
-                    className={`flex items-center justify-center gap-2 text-xs font-bold py-2.5 rounded-lg border flex-1 transition-all ${theme === 'dark'
-                        ? 'bg-slate-900 border-slate-800 text-slate-300 hover:text-white'
-                        : 'bg-slate-950 border-slate-950 text-white hover:bg-slate-800'
-                      }`}
+                    className="flex items-center justify-center gap-2 text-xs font-bold py-2.5 rounded-lg border flex-1 transition-all bg-white border-slate-300 text-slate-800 hover:border-slate-800 hover:text-slate-900 shadow-sm"
                   >
                     <FiGithub size={14} /> Source ↗
                   </a>
@@ -413,10 +410,7 @@ export default function Projects({ theme }) {
                       href={p.live}
                       target="_blank"
                       rel="noreferrer"
-                      className={`flex items-center justify-center gap-2 text-xs font-bold py-2.5 rounded-lg border flex-1 transition-all ${theme === 'dark'
-                          ? 'bg-slate-900 border-slate-800 text-slate-300 hover:text-white'
-                          : 'bg-slate-950 border-slate-950 text-white hover:bg-slate-800'
-                        }`}
+                      className="flex items-center justify-center gap-2 text-xs font-bold py-2.5 rounded-lg border flex-1 transition-all bg-white border-violet-200 text-violet-700 hover:border-violet-600 hover:bg-violet-50 shadow-sm"
                     >
                       <FiExternalLink size={14} /> Live Demo ↗
                     </a>

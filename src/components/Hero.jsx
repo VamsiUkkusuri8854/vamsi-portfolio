@@ -58,7 +58,7 @@ export default function Hero({ theme, setActiveSection }) {
           <div className="mt-8 flex flex-wrap items-center gap-6">
             <button
               onClick={() => { setActiveSection('projects'); window.scrollTo(0,0); }}
-              className="px-6 py-3 bg-gradient-to-r from-cyan to-violet-600 rounded-full text-white font-bold tracking-wide flex items-center gap-2 hover:scale-105 transition-all shadow-lg hover:shadow-cyan/20"
+              className="px-6 py-3 bg-white border-2 border-violet-600 rounded-full text-violet-700 font-bold tracking-wide flex items-center gap-2 hover:scale-105 transition-all shadow-md hover:bg-violet-50"
             >
               Explore Projects <FiArrowRight size={18} />
             </button>
@@ -66,10 +66,7 @@ export default function Hero({ theme, setActiveSection }) {
             {/* Interactive Rounded CV Button */}
             <button
               onClick={triggerResumeModal}
-              className={`flex items-center gap-2 px-5 py-3 rounded-full border transition-all ${theme === 'dark'
-                  ? 'border-slate-700 hover:border-pink-500 text-slate-300 hover:text-white bg-slate-900/40 hover:bg-slate-900'
-                  : 'border-slate-350 hover:border-violet-600 text-slate-800 hover:text-violet-600 bg-slate-50 hover:bg-white shadow-sm'
-                }`}
+              className="flex items-center gap-2 px-5 py-3 rounded-full border border-slate-300 hover:border-pink-500 text-slate-800 hover:text-pink-600 bg-white shadow-sm transition-all"
             >
               <FiFileText className="text-pink-500" size={18} />
               <span className="text-sm font-bold tracking-wide">View Live CV</span>
@@ -112,7 +109,7 @@ export default function Hero({ theme, setActiveSection }) {
                   rel="noreferrer"
                   whileHover={{ scale: 1.25, boxShadow: '0 0 20px rgba(255,255,255,0.7)', zIndex: 30 }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-11 h-11 md:w-12 md:h-12 rounded-full border border-white/25 bg-[#24292e] text-[#ffffff] flex items-center justify-center shadow-[0_0_12px_rgba(255,255,255,0.25)] cursor-pointer transition-transform"
+                  className="w-11 h-11 md:w-12 md:h-12 rounded-full border border-slate-300 bg-white text-[#24292e] flex items-center justify-center shadow-sm cursor-pointer transition-transform"
                 >
                   <FaGithub size={18} />
                 </motion.a>
@@ -124,7 +121,7 @@ export default function Hero({ theme, setActiveSection }) {
                   rel="noreferrer"
                   whileHover={{ scale: 1.25, boxShadow: '0 0 20px rgba(47,141,70,0.7)', zIndex: 30 }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-11 h-11 md:w-12 md:h-12 rounded-full border border-emerald-500/20 bg-[#2F8D46] text-white flex items-center justify-center shadow-[0_0_12px_rgba(47,141,70,0.35)] cursor-pointer transition-transform"
+                  className="w-11 h-11 md:w-12 md:h-12 rounded-full border border-slate-300 bg-white text-[#2F8D46] flex items-center justify-center shadow-sm cursor-pointer transition-transform"
                 >
                   <SiGeeksforgeeks size={18} />
                 </motion.a>
@@ -136,7 +133,7 @@ export default function Hero({ theme, setActiveSection }) {
                   rel="noreferrer"
                   whileHover={{ scale: 1.25, boxShadow: '0 0 20px rgba(10,102,194,0.7)', zIndex: 30 }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-11 h-11 md:w-12 md:h-12 rounded-full border border-[#0077B5]/20 bg-[#0A66C2] text-white flex items-center justify-center shadow-[0_0_12px_rgba(10,102,194,0.35)] cursor-pointer transition-transform"
+                  className="w-11 h-11 md:w-12 md:h-12 rounded-full border border-slate-300 bg-white text-[#0A66C2] flex items-center justify-center shadow-sm cursor-pointer transition-transform"
                 >
                   <FaLinkedin size={18} />
                 </motion.a>
@@ -148,7 +145,7 @@ export default function Hero({ theme, setActiveSection }) {
                   rel="noreferrer"
                   whileHover={{ scale: 1.25, boxShadow: '0 0 20px rgba(248,159,27,0.7)', zIndex: 30 }}
                   whileTap={{ scale: 0.95 }}
-                  className="w-11 h-11 md:w-12 md:h-12 rounded-full border border-orange-400/20 bg-[#F89F1B] text-white flex items-center justify-center shadow-[0_0_12px_rgba(248,159,27,0.35)] cursor-pointer transition-transform"
+                  className="w-11 h-11 md:w-12 md:h-12 rounded-full border border-slate-300 bg-white text-[#F89F1B] flex items-center justify-center shadow-sm cursor-pointer transition-transform"
                 >
                   <SiLeetcode size={18} />
                 </motion.a>

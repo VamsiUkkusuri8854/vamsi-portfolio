@@ -30,7 +30,7 @@ export default function Contact({ theme }) {
       `Message Body:\n${formData.message}\n\n` +
       `Best regards,\n${formData.name}`
     )
-    
+
     window.location.href = `mailto:vamsiukkusuri@gmail.com?subject=${mailSubject}&body=${mailBody}`
 
     // Show visual dispatched status overlay
@@ -74,63 +74,53 @@ export default function Contact({ theme }) {
               <h2 className="text-3xl md:text-5xl font-extrabold bg-gradient-to-r from-teal-400 via-cyan to-blue-500 bg-clip-text text-transparent tracking-tight">
                 Contact Me
               </h2>
-              <p className={`mt-4 text-base md:text-lg leading-relaxed font-sans ${
-                theme === 'dark' ? 'text-slate-300' : 'text-slate-650'
-              }`}>
+              <p className={`mt-4 text-base md:text-lg leading-relaxed font-sans ${theme === 'dark' ? 'text-slate-300' : 'text-slate-650'
+                }`}>
                 Have an interesting project, job opportunity, or just want to chat about Java backends and AI algorithms? Drop me a line, and let's coordinate!
               </p>
             </motion.div>
 
             <div className="flex flex-col gap-4 mt-2">
-              <div className={`flex items-center gap-4 p-4 rounded-xl border shadow-xl ${
-                theme === 'dark' ? 'bg-slate-950/70 border-slate-800/80' : 'bg-white border-slate-200'
-              }`}>
-                <div className={`p-3 rounded border shadow-inner ${
-                  theme === 'dark' ? 'bg-slate-900 border-slate-800 text-cyan' : 'bg-slate-50 border-slate-200 text-violet-600'
+              <div className={`flex items-center gap-4 p-4 rounded-xl border shadow-xl ${theme === 'dark' ? 'bg-slate-950/70 border-slate-800/80' : 'bg-white border-slate-200'
                 }`}>
-                  <FiMail size={20} />
+                <div className={`p-3 rounded border shadow-inner ${theme === 'dark' ? 'bg-slate-900 border-slate-800 text-cyan' : 'bg-white border-slate-200 text-blue-500'
+                  }`}>
+                  <FiMail size={22} strokeWidth={2.5} />
                 </div>
                 <div>
                   <div className="text-[10px] font-mono text-slate-500 uppercase tracking-widest">Email Address</div>
-                  <a href="mailto:vamsiukkusuri@gmail.com" className={`text-sm font-bold hover:text-pink-500 transition-colors select-all ${
-                    theme === 'dark' ? 'text-slate-200' : 'text-slate-800'
-                  }`}>
+                  <a href="mailto:vamsiukkusuri@gmail.com" className={`text-sm font-bold hover:text-pink-500 transition-colors select-all ${theme === 'dark' ? 'text-slate-200' : 'text-slate-800'
+                    }`}>
                     vamsiukkusuri@gmail.com
                   </a>
                 </div>
               </div>
 
-              <div className={`flex items-center gap-4 p-4 rounded-xl border shadow-xl ${
-                theme === 'dark' ? 'bg-slate-950/70 border-slate-800/80' : 'bg-white border-slate-200'
-              }`}>
-                <div className={`p-3 rounded border shadow-inner ${
-                  theme === 'dark' ? 'bg-slate-900 border-slate-800 text-purple-400' : 'bg-slate-50 border-slate-200 text-violet-600'
+              <div className={`flex items-center gap-4 p-4 rounded-xl border shadow-xl ${theme === 'dark' ? 'bg-slate-950/70 border-slate-800/80' : 'bg-white border-slate-200'
                 }`}>
-                  <FiPhone size={20} />
+                <div className={`p-3 rounded border shadow-inner ${theme === 'dark' ? 'bg-slate-900 border-slate-800 text-purple-400' : 'bg-white border-slate-200 text-emerald-500'
+                  }`}>
+                  <FiPhone size={22} strokeWidth={2.5} />
                 </div>
                 <div>
                   <div className="text-[10px] font-mono text-slate-500 uppercase tracking-widest">Phone Number</div>
-                  <a href="tel:+918885427136" className={`text-sm font-bold hover:text-pink-500 transition-colors select-all ${
-                    theme === 'dark' ? 'text-slate-200' : 'text-slate-800'
-                  }`}>
+                  <a href="tel:+918885427136" className={`text-sm font-bold hover:text-pink-500 transition-colors select-all ${theme === 'dark' ? 'text-slate-200' : 'text-slate-800'
+                    }`}>
                     +91 8885427136
                   </a>
                 </div>
               </div>
 
-              <div className={`flex items-center gap-4 p-4 rounded-xl border shadow-xl ${
-                theme === 'dark' ? 'bg-slate-950/70 border-slate-800/80' : 'bg-white border-slate-200'
-              }`}>
-                <div className={`p-3 rounded border shadow-inner ${
-                  theme === 'dark' ? 'bg-slate-900 border-slate-800 text-pink-400' : 'bg-slate-50 border-slate-200 text-violet-600'
+              <div className={`flex items-center gap-4 p-4 rounded-xl border shadow-xl ${theme === 'dark' ? 'bg-slate-950/70 border-slate-800/80' : 'bg-white border-slate-200'
                 }`}>
-                  <FiMapPin size={20} />
+                <div className={`p-3 rounded border shadow-inner ${theme === 'dark' ? 'bg-slate-900 border-slate-800 text-pink-400' : 'bg-white border-slate-200 text-pink-500'
+                  }`}>
+                  <FiMapPin size={22} strokeWidth={2.5} />
                 </div>
                 <div>
                   <div className="text-[10px] font-mono text-slate-500 uppercase tracking-widest">Based In</div>
-                  <div className={`text-sm font-bold ${
-                    theme === 'dark' ? 'text-slate-200' : 'text-slate-800'
-                  }`}>
+                  <div className={`text-sm font-bold ${theme === 'dark' ? 'text-slate-200' : 'text-slate-800'
+                    }`}>
                     Andhra Pradesh, India
                   </div>
                 </div>
@@ -140,11 +130,10 @@ export default function Contact({ theme }) {
 
           {/* Form Column */}
           <div className="md:col-span-7">
-            <motion.form 
+            <motion.form
               onSubmit={handleSubmit}
-              className={`p-6 md:p-8 rounded-2xl border shadow-2xl flex flex-col gap-4 relative overflow-hidden ${
-                theme === 'dark' ? 'bg-slate-950/70 border-slate-800/80' : 'bg-white border-slate-200'
-              }`}
+              className={`p-6 md:p-8 rounded-2xl border shadow-2xl flex flex-col gap-4 relative overflow-hidden ${theme === 'dark' ? 'bg-slate-950/70 border-slate-800/80' : 'bg-white border-slate-200'
+                }`}
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -152,7 +141,7 @@ export default function Contact({ theme }) {
               {/* Submission Status Overlay */}
               <AnimatePresence>
                 {isSubmitted && (
-                  <motion.div 
+                  <motion.div
                     className="absolute inset-0 bg-slate-950/95 z-20 flex flex-col items-center justify-center p-6 text-center"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
@@ -176,77 +165,73 @@ export default function Contact({ theme }) {
               <div className="grid md:grid-cols-2 gap-4">
                 <div>
                   <label className="text-[10px] font-mono text-slate-500 uppercase tracking-widest mb-1.5 block">Full Name <span className="text-pink-500">*</span></label>
-                  <input 
-                    type="text" 
+                  <input
+                    type="text"
                     name="name"
                     required
                     value={formData.name}
                     onChange={handleChange}
-                    className={`w-full p-3 border rounded-lg text-sm outline-none transition-all ${
-                      theme === 'dark'
+                    className={`w-full p-3 border rounded-lg text-sm outline-none transition-all ${theme === 'dark'
                         ? 'bg-slate-950 border-slate-800 text-slate-200 focus:border-cyan'
                         : 'bg-slate-50 border-slate-200 text-slate-800 focus:border-violet-400'
-                    }`} 
-                    placeholder="John Doe" 
+                      }`}
+                    placeholder="John Doe"
                   />
                 </div>
                 <div>
                   <label className="text-[10px] font-mono text-slate-500 uppercase tracking-widest mb-1.5 block">Email Address <span className="text-pink-500">*</span></label>
-                  <input 
-                    type="email" 
+                  <input
+                    type="email"
                     name="email"
                     required
                     value={formData.email}
                     onChange={handleChange}
-                    className={`w-full p-3 border rounded-lg text-sm outline-none transition-all ${
-                      theme === 'dark'
+                    className={`w-full p-3 border rounded-lg text-sm outline-none transition-all ${theme === 'dark'
                         ? 'bg-slate-950 border-slate-800 text-slate-200 focus:border-cyan'
                         : 'bg-slate-50 border-slate-200 text-slate-800 focus:border-violet-400'
-                    }`} 
-                    placeholder="john@example.com" 
+                      }`}
+                    placeholder="john@example.com"
                   />
                 </div>
               </div>
 
               <div>
                 <label className="text-[10px] font-mono text-slate-500 uppercase tracking-widest mb-1.5 block">Subject <span className="text-pink-500">*</span></label>
-                <input 
-                  type="text" 
+                <input
+                  type="text"
                   name="subject"
                   required
                   value={formData.subject}
                   onChange={handleChange}
-                  className={`w-full p-3 border rounded-lg text-sm outline-none transition-all ${
-                    theme === 'dark'
+                  className={`w-full p-3 border rounded-lg text-sm outline-none transition-all ${theme === 'dark'
                       ? 'bg-slate-950 border-slate-800 text-slate-200 focus:border-cyan'
                       : 'bg-slate-50 border-slate-200 text-slate-800 focus:border-violet-400'
-                  }`} 
-                  placeholder="Collaborating on a project" 
+                    }`}
+                  placeholder="Collaborating on a project"
                 />
               </div>
 
               <div>
                 <label className="text-[10px] font-mono text-slate-500 uppercase tracking-widest mb-1.5 block">Message Body <span className="text-pink-500">*</span></label>
-                <textarea 
+                <textarea
                   name="message"
                   required
                   value={formData.message}
                   onChange={handleChange}
-                  className={`w-full p-3 border rounded-lg text-sm outline-none transition-all ${
-                    theme === 'dark'
+                  className={`w-full p-3 border rounded-lg text-sm outline-none transition-all ${theme === 'dark'
                       ? 'bg-slate-950 border-slate-800 text-slate-200 focus:border-cyan'
                       : 'bg-slate-50 border-slate-200 text-slate-800 focus:border-violet-400'
-                  }`} 
-                  rows="4" 
+                    }`}
+                  rows="4"
                   placeholder="Hey Vamsi, I'd love to connect..."
                 />
               </div>
 
-              <button 
-                type="submit" 
-                className="mt-2 w-full md:w-fit px-6 py-3 bg-gradient-to-r from-cyan to-violet-600 text-white font-bold rounded-lg shadow-lg flex items-center justify-center gap-2 hover:scale-105 transition-transform"
+              <button
+                type="submit"
+                className="mt-2 w-full md:w-fit px-6 py-3 bg-white text-violet-700 border-2 border-violet-600 font-bold rounded-lg shadow-md flex items-center justify-center gap-2 hover:scale-105 hover:bg-violet-50 transition-all"
               >
-                Send Message <FiSend size={16} />
+                Send Message <FiSend size={18} strokeWidth={2.5} />
               </button>
             </motion.form>
           </div>
