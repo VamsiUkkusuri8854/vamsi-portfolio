@@ -15,7 +15,7 @@ export default function Hero({ theme, setActiveSection }) {
   }
 
   return (
-    <section id="home" className="min-h-[85vh] md:min-h-screen flex items-center pt-20 md:pt-28 pb-10 md:pb-16">
+    <section id="home" className="min-h-[85vh] md:min-h-screen flex items-center pt-16 md:pt-24 pb-16 md:pb-24">
       <div className="grid lg:grid-cols-12 gap-12 items-center w-full">
         {/* Left Content Column */}
         <motion.div
@@ -58,7 +58,7 @@ export default function Hero({ theme, setActiveSection }) {
           <div className="mt-8 flex flex-wrap items-center gap-6">
             <button
               onClick={() => { setActiveSection('projects'); window.scrollTo(0,0); }}
-              className="px-6 py-3 bg-white border-2 border-violet-600 rounded-full text-violet-700 font-bold tracking-wide flex items-center gap-2 hover:scale-105 transition-all shadow-md hover:bg-violet-50"
+              className="px-6 py-3 bg-violet-600 border-2 border-violet-600 rounded-full text-white font-bold tracking-wide flex items-center gap-2 hover:bg-violet-700 transition-all shadow-md"
             >
               Explore Projects <FiArrowRight size={18} />
             </button>
@@ -84,14 +84,14 @@ export default function Hero({ theme, setActiveSection }) {
           {/* Main Container */}
           <div className="relative w-80 h-80 md:w-[400px] md:h-[400px] flex items-center justify-center">
 
-            {/* Decorative orbit ring 1 (Pink) */}
-            <div className="absolute w-[320px] h-[320px] md:w-[420px] md:h-[420px] border border-pink-500/35 rounded-full pointer-events-none animate-[spin_24s_linear_infinite]" />
+            {/* Subtle orbit detail keeps the profile image visually anchored. */}
+            <div className="absolute w-[320px] h-[320px] md:w-[420px] md:h-[420px] border border-violet-200 rounded-full pointer-events-none" />
 
             {/* Decorative orbit ring 2 (Cyan dashed) */}
-            <div className="absolute w-[280px] h-[280px] md:w-[350px] md:h-[350px] border border-dashed border-cyan/25 rounded-full pointer-events-none animate-[spin_16s_linear_infinite_reverse]" />
+            <div className="absolute w-[280px] h-[280px] md:w-[350px] md:h-[350px] border border-dashed border-pink-200 rounded-full pointer-events-none" />
 
             {/* Glowing Backdrop */}
-            <div className="absolute w-64 h-64 rounded-full bg-violet-600/10 blur-3xl" />
+            <div className="absolute w-64 h-64 rounded-full bg-violet-100 blur-3xl" />
 
             {/* Profile Image Container */}
             <div className="w-72 h-72 md:w-[360px] md:h-[360px] rounded-full relative p-1.5 bg-gradient-to-tr from-cyan via-violet-500 to-pink-500 shadow-2xl z-10 hover:scale-105 transition-transform duration-500">

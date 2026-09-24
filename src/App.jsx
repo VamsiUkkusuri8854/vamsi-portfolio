@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from './components/Navbar'
 import Hero from './components/Hero'
 import About from './components/About'
@@ -10,7 +10,6 @@ import Contact from './components/Contact'
 import Footer from './components/Footer'
 import SocialBar from './components/SocialBar'
 import ResumeWidget from './components/ResumeWidget'
-import ParticlesBg from './components/ParticlesBg'
 import Preloader from './components/Preloader'
 import { AnimatePresence } from 'framer-motion'
 
@@ -24,6 +23,11 @@ export default function App() {
     window.scrollTo({ top: 0, left: 0, behavior: 'instant' })
   }, [])
 
+  const navigateToSection = (sectionId) => {
+    setActiveSection(sectionId)
+    document.getElementById(sectionId)?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   return (
     <div className={`min-h-screen relative transition-colors duration-500 overflow-x-hidden ${theme === 'dark' ? 'bg-[#0b1120] text-slate-100' : 'bg-[#ffffff] text-slate-900 font-medium'
       }`}>
@@ -33,76 +37,23 @@ export default function App() {
           <Preloader onComplete={() => setLoading(false)} />
         )}
       </AnimatePresence>
-      {/* Dynamic Viewport Cyber Neon Border */}
-      <div className="viewport-glow-border pointer-events-none" />
-
-      {/* Background Interactive Particles */}
-      <ParticlesBg theme={theme} />
-
       {/* Floating Side Components */}
       <SocialBar theme={theme} />
       <ResumeWidget theme={theme} />
 
       {/* Primary Navigation Header */}
-      <Navbar theme={theme} activeSection={activeSection} setActiveSection={setActiveSection} />
+      <Navbar theme={theme} activeSection={activeSection} onNavigate={navigateToSection} />
 
-      {/* Core Pages Container */}
-      <main className="relative z-10 flex flex-col flex-grow min-h-screen pt-24">
-        {activeSection === 'home' && (
-          <div className={`w-full flex-grow transition-colors duration-500 ${theme === 'dark' ? 'bg-gradient-to-b from-[#0b1120] via-[#09183d] to-[#0b1120]' : 'bg-white'}`}>
-            <div className="container mx-auto px-6 md:px-12 lg:px-24 xl:px-32 max-w-7xl">
-              <Hero theme={theme} setActiveSection={setActiveSection} />
-            </div>
-          </div>
-        )}
-
-        {activeSection === 'about' && (
-          <div className={`w-full flex-grow transition-colors duration-500 ${theme === 'dark' ? 'bg-gradient-to-b from-[#0b1120] via-[#1e1548] to-[#0b1120]' : 'bg-white'}`}>
-            <div className="container mx-auto px-6 md:px-12 lg:px-24 xl:px-32 max-w-7xl">
-              <About theme={theme} />
-            </div>
-          </div>
-        )}
-
-        {activeSection === 'skills' && (
-          <div className={`w-full flex-grow transition-colors duration-500 ${theme === 'dark' ? 'bg-gradient-to-b from-[#0b1120] via-[#092d24] to-[#0b1120]' : 'bg-white'}`}>
-            <div className="container mx-auto px-6 md:px-12 lg:px-24 xl:px-32 max-w-7xl">
-              <Skills theme={theme} />
-            </div>
-          </div>
-        )}
-
-        {activeSection === 'projects' && (
-          <div className={`w-full flex-grow transition-colors duration-500 ${theme === 'dark' ? 'bg-gradient-to-b from-[#0b1120] via-[#0e2158] to-[#0b1120]' : 'bg-white'}`}>
-            <div className="container mx-auto px-6 md:px-12 lg:px-24 xl:px-32 max-w-7xl">
-              <Projects theme={theme} />
-            </div>
-          </div>
-        )}
-
-        {activeSection === 'education' && (
-          <div className={`w-full flex-grow transition-colors duration-500 ${theme === 'dark' ? 'bg-gradient-to-b from-[#0b1120] via-[#240e3c] to-[#0b1120]' : 'bg-white'}`}>
-            <div className="container mx-auto px-6 md:px-12 lg:px-24 xl:px-32 max-w-7xl">
-              <Education theme={theme} />
-            </div>
-          </div>
-        )}
-
-        {activeSection === 'certifications' && (
-          <div className={`w-full flex-grow transition-colors duration-500 ${theme === 'dark' ? 'bg-gradient-to-b from-[#0b1120] via-[#1a0e3c] to-[#0b1120]' : 'bg-white'}`}>
-            <div className="container mx-auto px-6 md:px-12 lg:px-24 xl:px-32 max-w-7xl">
-              <Certifications theme={theme} />
-            </div>
-          </div>
-        )}
-
-        {activeSection === 'contact' && (
-          <div className={`w-full flex-grow transition-colors duration-500 ${theme === 'dark' ? 'bg-gradient-to-b from-[#0b1120] via-[#092545] to-[#0b1120]' : 'bg-white'}`}>
-            <div className="container mx-auto px-6 md:px-12 lg:px-24 xl:px-32 max-w-7xl">
-              <Contact theme={theme} />
-            </div>
-          </div>
-        )}
+      <main className="relative z-10 flex flex-col flex-grow min-h-screen pt-20">
+        <div className="container mx-auto px-6 md:px-12 lg:px-24 xl:px-32 max-w-7xl">
+          <Hero theme={theme} setActiveSection={navigateToSection} />
+          <About theme={theme} />
+          <Skills theme={theme} />
+          <Projects theme={theme} />
+          <Education theme={theme} />
+          <Certifications theme={theme} />
+          <Contact theme={theme} />
+        </div>
       </main>
 
       {/* Grid Footer details */}

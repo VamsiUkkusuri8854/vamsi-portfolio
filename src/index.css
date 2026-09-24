@@ -5,10 +5,10 @@
 @tailwind utilities;
 
 :root {
-  --bg: #0b1120;
+  --bg: #f8fafc;
   --card: rgba(255, 255, 255, 0.02);
-  --accent1: #00F0FF;
-  --accent2: #a855f7;
+  --accent1: #7c3aed;
+  --accent2: #ec4899;
   --neon-glow: 0 0 15px rgba(168, 85, 247, 0.4), 0 0 30px rgba(0, 240, 255, 0.2);
 }
 
@@ -32,16 +32,13 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Viewport Breathing Neon Border */
+/* Keep a quiet edge around the page while sections animate in. */
 .viewport-glow-border {
   position: fixed;
   inset: 0;
   pointer-events: none;
   z-index: 9999;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: inset 0 0 20px rgba(168, 85, 247, 0.15),
-    inset 0 0 40px rgba(0, 240, 255, 0.05);
-  animation: breathing-border 6s ease-in-out infinite alternate;
+  border: 1px solid rgba(124, 58, 237, 0.08);
 }
 
 @keyframes breathing-border {
@@ -60,11 +57,11 @@ body {
 
 /* Glassmorphism Styles */
 .glass {
-  background: rgba(10, 10, 15, 0.45);
+  background: rgba(255, 255, 255, 0.76);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.04);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(148, 163, 184, 0.24);
+  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
 }
 
 .glass-hover {

@@ -11,20 +11,20 @@ const links = [
   { name: 'Contact Me', id: 'contact' }
 ]
 
-export default function Navbar({ theme, activeSection, setActiveSection }) {
+export default function Navbar({ theme, activeSection, onNavigate }) {
   return (
     <motion.header
       initial={{ y: -60, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      className="fixed w-full z-40 top-0 px-6 py-4 print:hidden"
+      className="fixed w-full z-40 top-0 px-4 py-3 print:hidden"
     >
-      <div className={`max-w-7xl mx-auto flex flex-wrap gap-4 justify-between items-center px-6 py-3 rounded-full border shadow-xl relative transition-all duration-300 ${theme === 'dark'
+      <div className={`max-w-7xl mx-auto flex flex-wrap gap-4 justify-between items-center px-5 py-3 rounded-2xl border shadow-lg relative transition-all duration-300 ${theme === 'dark'
           ? 'bg-slate-950/65 border-slate-800/80 text-white shadow-black/40'
           : 'bg-white/75 backdrop-blur-md border-slate-200/80 text-slate-800 shadow-slate-200/50'
         }`}>
         {/* Left: Brand/Logo */}
         <div>
-          <button onClick={() => { setActiveSection('home'); window.scrollTo(0,0); }} className="font-sans text-lg md:text-xl font-extrabold tracking-wide hover:opacity-80 transition-opacity">
+          <button onClick={() => onNavigate('home')} className="font-sans text-lg md:text-xl font-extrabold tracking-wide hover:opacity-80 transition-opacity">
             Vamsi <span className="text-violet-500 font-medium">Ukkusuri</span>
           </button>
         </div>
@@ -34,8 +34,8 @@ export default function Navbar({ theme, activeSection, setActiveSection }) {
           {links.map(l => (
             <button
               key={l.name}
-              onClick={() => { setActiveSection(l.id); window.scrollTo(0,0); }}
-              className={`px-4 py-2 md:px-6 md:py-2.5 rounded-full text-sm md:text-base font-bold transition-all hover:scale-105 border ${
+              onClick={() => onNavigate(l.id)}
+              className={`px-3 py-1.5 md:px-4 md:py-2 rounded-full text-xs md:text-sm font-bold transition-all border ${
                   activeSection === l.id 
                     ? 'bg-white border-violet-600 text-violet-700 shadow-md ring-1 ring-violet-600'
                     : (theme === 'dark'
