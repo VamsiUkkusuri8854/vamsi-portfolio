@@ -271,7 +271,7 @@ export default function Projects({ theme }) {
   };
 
   return (
-    <section id="projects" className="py-10 md:py-16 relative overflow-hidden">
+    <section id="projects" className="py-6 md:py-10 relative overflow-hidden scroll-mt-28">
       <div className="absolute inset-0 dot-grid-bg opacity-30 pointer-events-none" />
 
       <div className="flex flex-col gap-8 relative z-10 w-full max-w-7xl mx-auto px-4 md:px-8">

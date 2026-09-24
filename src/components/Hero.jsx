@@ -57,7 +57,7 @@ export default function Hero({ theme, setActiveSection }) {
           {/* Action Buttons */}
           <div className="mt-8 flex flex-wrap items-center gap-6">
             <button
-              onClick={() => { setActiveSection('projects'); window.scrollTo(0,0); }}
+              onClick={() => setActiveSection('projects')}
               className="px-6 py-3 bg-violet-600 border-2 border-violet-600 rounded-full text-white font-bold tracking-wide flex items-center gap-2 hover:bg-violet-700 transition-all shadow-md"
             >
               Explore Projects <FiArrowRight size={18} />

@@ -39,7 +39,7 @@ const certifications = [
 
 export default function Education({ theme }) {
   return (
-    <section id="about-journey" className="py-10 md:py-16 relative">
+    <section id="education" className="py-6 md:py-10 relative scroll-mt-28">
       <div className="grid lg:grid-cols-12 gap-8 items-start">
         {/* Left Side: Rotated Label */}
         <div className="lg:col-span-1 hidden lg:flex justify-center pt-4">
@@ -49,7 +49,7 @@ export default function Education({ theme }) {
         </div>
 
         {/* Right Side: Consolidated Grid layout */}
-        <div className="lg:col-span-11 grid md:grid-cols-12 gap-12 w-full">
+        <div className="lg:col-span-11 grid md:grid-cols-12 gap-8 w-full">
           {/* Main Left: Timeline list */}
           <div className="md:col-span-7 flex flex-col gap-8">
             <motion.div
@@ -69,7 +69,7 @@ export default function Education({ theme }) {
             </motion.div>
 
             {/* Vertical timeline */}
-            <div className={`relative border-l ml-4 flex flex-col gap-10 py-2 ${
+            <div className={`relative border-l ml-4 flex flex-col gap-6 py-2 ${
               theme === 'dark' ? 'border-slate-800' : 'border-slate-200'
             }`}>
               {educationList.map((edu, idx) => (

@@ -45,7 +45,7 @@ export default function App() {
       <Navbar theme={theme} activeSection={activeSection} onNavigate={navigateToSection} />
 
       <main className="relative z-10 flex flex-col flex-grow min-h-screen pt-20">
-        <div className="container mx-auto px-6 md:px-12 lg:px-24 xl:px-32 max-w-7xl">
+        <div className="container mx-auto px-4 sm:px-6 md:px-10 lg:px-16 xl:px-24 max-w-7xl">
           <Hero theme={theme} setActiveSection={navigateToSection} />
           <About theme={theme} />
           <Skills theme={theme} />
