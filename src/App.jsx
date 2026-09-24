@@ -10,12 +10,9 @@ import Contact from './components/Contact'
 import Footer from './components/Footer'
 import SocialBar from './components/SocialBar'
 import ResumeWidget from './components/ResumeWidget'
-import Preloader from './components/Preloader'
-import { AnimatePresence } from 'framer-motion'
 
 export default function App() {
   const theme = 'light'
-  const [loading, setLoading] = useState(true)
   const [activeSection, setActiveSection] = useState('home')
 
   // Force scroll to top on mount
@@ -31,12 +28,6 @@ export default function App() {
   return (
     <div className={`min-h-screen relative transition-colors duration-500 overflow-x-hidden ${theme === 'dark' ? 'bg-[#0b1120] text-slate-100' : 'bg-[#ffffff] text-slate-900 font-medium'
       }`}>
-      {/* Dynamic Greetings Preloader Screen */}
-      <AnimatePresence mode="wait">
-        {loading && (
-          <Preloader onComplete={() => setLoading(false)} />
-        )}
-      </AnimatePresence>
       {/* Floating Side Components */}
       <SocialBar theme={theme} />
       <ResumeWidget theme={theme} />
